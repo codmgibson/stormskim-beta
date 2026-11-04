@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101c31">
+  <meta name="description" content="Stormskim: an approachable, free organizer with Niarel, your task and reminder companion.">
+  <title>Stormskim — Your tasks. Your momentum.</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <style>
+:root{--ink:#182740;--nav:#152742;--nav-muted:#9aabc0;--muted:#718096;--line:#e5ebf0;--card:#fff;--bg:#f5f7fa;--teal:#246f87;--teal-bright:#e3b967;--blue:#4979b3;--amber:#a16813;--red:#b44348;--radius:15px;--shadow:0 5px 24px rgba(19,39,69,.045)}
+*{box-sizing:border-box}html{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}body{margin:0;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #6abbd0;outline-offset:2px}button:disabled{opacity:.5;cursor:not-allowed}a{color:var(--teal)}p{margin-top:0}h1,h2,h3{letter-spacing:-.03em}h1{font-size:clamp(1.8rem,3vw,2.7rem);line-height:1.1;margin:5px 0 12px}h2{font-size:1.28rem;margin:0}h3{font-size:1rem;margin:0}.shell{display:flex;min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;width:248px;flex-shrink:0;background:var(--nav);color:white;display:flex;flex-direction:column;padding:28px 15px 22px}.brand{display:flex;align-items:center;gap:12px;padding:2px 10px 38px}.brand-icon{font-size:23px;color:#103a39;background:var(--teal-bright);border-radius:12px;width:39px;height:39px;display:grid;place-items:center}.brand strong{font-size:21px;letter-spacing:-.045em}.brand small{display:block;font-size:9px;letter-spacing:.18em;color:var(--nav-muted);margin-top:3px}.brand-version{opacity:.65}.sidebar-label{color:#6f839b;font-size:10px;font-weight:800;letter-spacing:.15em;padding:0 15px 12px}.second-label{padding-top:30px}.nav{display:grid;gap:5px}.nav-item{width:100%;background:transparent;border:0;display:flex;align-items:center;gap:13px;text-align:left;border-radius:10px;color:#afbed0;padding:13px 13px;font-weight:600;font-size:13px;min-height:45px}.nav-item>span:first-child{display:inline-block;width:22px;text-align:center;font-size:18px;line-height:1}.nav-item:hover{background:#1b2b47;color:white}.nav-item.active{background:#253b58;color:white}.nav-count{margin-left:auto;border-radius:15px;padding:1px 7px;color:#c4e3dc;font-size:11px;background:#36516b}.sidebar-bottom{margin-top:auto;padding:20px 11px 0}.sidebar-bottom p{font-size:10px;margin:12px 0 0;color:#73879f}.privacy-pill{display:inline-flex;gap:8px;align-items:center;border:1px solid #395169;border-radius:24px;padding:9px 12px;color:#c9e0e9;font-size:11px}.privacy-dot{width:7px;height:7px;border-radius:50%;background:var(--teal-bright);box-shadow:0 0 0 3px #24494b}.main{flex:1;min-width:0;display:flex;flex-direction:column}.topbar{height:82px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,56px);gap:16px}.breadcrumb{font-size:13px;color:#75849a}.breadcrumb span{color:#bfc9d3;padding:0 6px}.header-actions{display:flex;gap:10px;align-items:center}.today{font-size:12px;color:#7b8999;margin-right:8px}.mobile-brand{display:none}.btn{padding:11px 16px;border-radius:9px;border:1px solid transparent;font-weight:700;font-size:12px;line-height:1.2;white-space:nowrap;display:inline-flex;justify-content:center;align-items:center;gap:7px}.btn-primary{background:#087e74;color:white}.btn-primary:hover{background:#05685f}.btn-soft{background:#e9f5f2;color:#096d65}.btn-soft:hover{background:#d7eee8}.btn-quiet{color:#617289;background:#f2f5f8}.btn-white{background:white;color:#345368}.btn-outline{border-color:#dce5e9;color:#4e6278;background:white}.btn-outline:hover{background:#f1f5f8}.btn-danger{background:#fff2f2;border-color:#f2d6d8;color:#9e343c}.btn-small{padding:8px 12px;font-size:11px}.icon-btn{border:0;background:transparent;color:#748196;border-radius:8px;font-size:23px;width:32px;height:32px}.icon-btn:hover{background:#eef1f5}.notice{margin:16px clamp(20px,4vw,56px) 0;padding:12px 16px;background:#ddf5ee;border:1px solid #aae3cf;color:#176658;border-radius:10px;font-size:13px}.demo-banner{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#f9f3df;color:#5b4a23;padding:12px clamp(20px,4vw,56px);font-size:12px;border-bottom:1px solid #efe0b6}.content{padding:36px clamp(20px,4vw,56px) 54px;max-width:1530px;width:100%;margin:0 auto;flex:1}.footer{font-size:11px;color:#98a5b3;padding:16px clamp(20px,4vw,56px) 26px}.footer span{color:#aeb9c3}.eyebrow{font-size:10px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--teal);margin:0 0 7px}.lead{color:#7d8a9b;line-height:1.6;font-size:13px;margin-bottom:0}.page-intro{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:28px}.page-intro h1{margin-bottom:8px}.page-actions{display:flex;gap:10px}.mini-eyebrow{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#93a0af;margin-bottom:7px}.stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:26px}.stat{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:21px;min-width:0;box-shadow:var(--shadow)}.stat-top{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:12px;color:#6d7a8a;font-weight:600}.stat-icon{display:grid;place-items:center;width:31px;height:31px;border-radius:9px;background:#eaf4f4;color:var(--teal);font-size:17px}.stat-num{font-size:31px;font-weight:800;letter-spacing:-.045em;margin-top:10px}.stat-desc{color:#96a1ad;font-size:11px;margin-top:5px}.two-col{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:20px}.section-card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);min-width:0}.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}.card-head h2{font-size:17px}.text-link{border:none;background:none;color:var(--teal);font-weight:800;font-size:12px;padding:5px}.text-link:hover{text-decoration:underline}.task-row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #eef1f4}.task-row:last-child{border-bottom:0}.task-row>div{min-width:0;flex:1}.task-check{width:18px;height:18px;accent-color:#058c7e;flex:none}.task-title{font-size:13px;font-weight:700;overflow-wrap:anywhere}.task-row.done .task-title{text-decoration:line-through;color:#9eabb7}.task-sub{display:flex;gap:10px;flex-wrap:wrap;color:#9ba6b1;margin-top:5px;font-size:11px}.task-actions{display:flex;gap:4px}.chip{border-radius:7px;padding:4px 8px;font-size:10px;font-weight:800;white-space:nowrap}.chip.high{background:#fce9e7;color:#a95349}.chip.medium{background:#fff3df;color:#a16a21}.chip.low{background:#ebf3fc;color:#4976ad}.chip.active{background:#e2f4ed;color:#167a63}.chip.neutral{background:#eef1f5;color:#718297}.chip.issue{background:#fae9ea;color:#ac3e4f}.chip.warn{background:#fdf2d9;color:#976713}.chips{display:flex;align-items:center;flex-wrap:wrap;gap:6px}.empty{padding:35px 15px;text-align:center;color:#9ba8b4;font-size:13px;background:#fafbfd;border-radius:12px;border:1px dashed #dce5ea}.empty strong{display:block;color:#586b80;font-size:14px;margin-bottom:7px}.load-mini{padding:13px 0;border-bottom:1px solid #f0f2f4;display:flex;justify-content:space-between;align-items:center;gap:12px}.load-mini:last-child{border:0}.load-mini strong{display:block;font-size:13px}.load-mini small{display:block;margin-top:6px;color:#96a4b1;font-size:11px}.quick-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.quick-action{border:1px solid var(--line);border-radius:11px;background:#f9fbfb;padding:13px;text-align:left;color:#385a6e;font-weight:800;font-size:12px;min-height:70px}.quick-action b{display:block;color:var(--teal);font-size:19px;margin-bottom:5px}.quick-action:hover{background:#eef8f5;border-color:#b7e4d6}.callout{padding:18px;background:#e9f5f1;border-radius:12px;color:#235d56;margin-top:19px}.callout strong{display:block;font-size:13px;margin-bottom:7px}.callout p{font-size:12px;color:#51736e;margin:0;line-height:1.6}.muted{color:#92a1b0;font-size:12px}.stack{display:grid;gap:20px}.toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid #dfe6ec;border-radius:8px;background:#fff;color:#627489;padding:9px 13px;font-size:12px;font-weight:700}.filter.selected{background:#e4f4ef;border-color:#bee4d6;color:#087a6b}.search-input{min-width:180px;border:1px solid var(--line);background:white;border-radius:9px;padding:10px 13px;font-size:12px}.board-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center;border:1px solid #e7edf0;border-radius:13px;padding:17px 20px;margin-bottom:12px;background:#fff;box-shadow:var(--shadow)}.board-primary{flex:1;min-width:205px}.board-primary h3{margin:0 0 6px;font-size:15px}.board-primary p{font-size:12px;color:#90a0ac;margin:0}.board-secondary{display:flex;gap:25px;align-items:center;flex-wrap:wrap}.board-field small{display:block;font-size:10px;letter-spacing:.07em;color:#9cabb7;text-transform:uppercase;margin-bottom:7px}.board-field strong{font-size:12px}.board-actions{display:flex;gap:5px}.board-meta{border-top:1px solid #f0f2f5;margin-top:12px;padding-top:12px;font-size:11px;color:#708495}.board-meta strong{color:#5b7186}.routine-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.routine-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:21px;box-shadow:var(--shadow)}.routine-card h3{font-size:16px;margin-bottom:8px}.routine-card p{font-size:12px;color:#7b8b9b;line-height:1.5;margin:0}.routine-steps{list-style:none;margin:17px 0;padding:0;display:grid;gap:10px}.routine-steps li{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:#62778b}.routine-steps li::before{content:'✓';color:#008878;font-weight:800}.routine-footer{border-top:1px solid #e9eef2;padding-top:15px;display:flex;gap:7px;flex-wrap:wrap}.suggestion{border:1px solid #d8e9e1;background:#f2fbf7;padding:19px;border-radius:13px;margin-top:20px}.suggestion h3{margin-bottom:7px}.suggestion p{font-size:12px;line-height:1.6;color:#688477}.suggestion-actions{display:flex;gap:8px}.assistant-shell{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(230px,.8fr);gap:18px}.chat-panel{background:#fff;border:1px solid var(--line);border-radius:15px;min-height:520px;display:flex;flex-direction:column;overflow:hidden}.chat-heading{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line)}.chat-heading h2{font-size:15px}.chat-messages{flex:1;overflow:auto;min-height:350px;max-height:520px;padding:20px;display:flex;flex-direction:column;gap:14px}.bubble{max-width:85%;padding:14px 16px;border-radius:13px;font-size:13px;line-height:1.62;white-space:pre-wrap;overflow-wrap:anywhere}.bubble.assistant{background:#f1f6f6;align-self:flex-start;border-bottom-left-radius:4px;color:#3b6170}.bubble.user{background:#147f74;color:white;align-self:flex-end;border-bottom-right-radius:4px}.chat-inputbar{padding:17px;border-top:1px solid var(--line);display:flex;gap:8px}.chat-inputbar input{flex:1;min-width:0;border:1px solid #dae6e9;border-radius:9px;padding:12px 13px;font-size:13px}.chat-command{display:block;width:100%;border:1px solid #dde8e5;background:white;color:#497267;text-align:left;border-radius:9px;font-size:12px;font-weight:600;padding:13px;margin-bottom:8px}.chat-command:hover{background:#f1faf7}.draft-area{margin-top:12px;background:#fcfefa;border:1px solid #cde3da;border-radius:10px;padding:14px}.draft-area textarea{width:100%;min-height:140px;resize:vertical;margin:10px 0;background:white;border:1px solid #cfdcd7;border-radius:8px;padding:12px;font-size:12px}.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.setting-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:23px}.setting-card h3{font-size:16px;margin-bottom:11px}.setting-card p{color:#7b8a9d;font-size:12px;line-height:1.65}.setting-card .btn{margin:3px 4px 3px 0}.info-list{font-size:12px;line-height:1.9;color:#687d91;padding-left:18px}.activity{list-style:none;padding:0;margin:0}.activity li{border-bottom:1px solid var(--line);padding:11px 0;font-size:12px;color:#677b90}.activity li:last-child{border:0}.activity time{display:block;color:#9faab5;font-size:11px;margin-top:5px}.danger-zone{border-color:#f0d6d6}.danger-zone h3{color:#a44349}.status-row{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #edf0f4;padding:11px 0;font-size:13px;gap:12px}.status-row:last-child{border:0}.hint{font-size:11px;color:#8796a5;line-height:1.6}.h3-spaced{margin:22px 0 14px}.toggle-line{display:flex!important;align-items:center;gap:9px;font-weight:600!important;font-size:12px!important}.toggle-line input{width:17px;height:17px}.right{margin-left:auto}
+dialog{padding:0;width:min(560px,calc(100% - 30px));max-height:min(90vh,850px);overflow:auto;border:0;border-radius:16px;box-shadow:0 20px 100px rgba(4,26,47,.25);background:white;color:var(--ink)}dialog::backdrop{background:rgba(6,19,36,.62)}.dialog-form{padding:30px}.dialog-title{display:flex;justify-content:space-between;gap:12px;align-items:start;margin-bottom:23px}.dialog-form label{font-size:12px;font-weight:700;color:#4a6279;display:grid;gap:7px;margin-bottom:15px}.dialog-form input,.dialog-form textarea,.dialog-form select{font-size:13px;color:#263c52;border:1px solid #dce4e9;background:#fcfdfd;padding:11px;border-radius:8px;width:100%;min-width:0}.dialog-form textarea{resize:vertical}.dialog-form .toggle-line input{width:17px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dialog-actions{display:flex;justify-content:end;gap:8px;border-top:1px solid var(--line);padding-top:18px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1100px){.stat-grid{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}.assistant-shell{grid-template-columns:1fr}.sidebar{width:213px}.today{display:none}}
+@media(max-width:760px){.shell{display:block}.sidebar{position:static;width:100%;height:auto;padding:10px 12px;display:flex;flex-direction:row;align-items:center;gap:4px;overflow-x:auto}.brand,.sidebar-label,.sidebar-bottom{display:none}.nav{display:flex;gap:5px;overflow:auto;scrollbar-width:thin}.nav-item{flex:none;width:auto;padding:11px 13px;min-height:36px;font-size:12px}.nav-item>span:first-child{display:none}.nav-count{display:none}.second-label+.nav{display:flex}.topbar{height:auto;min-height:68px;padding:12px 16px;flex-wrap:wrap}.breadcrumb{display:none}.mobile-brand{display:block;font-size:15px;color:#3b5971}.header-actions{margin-left:auto}.header-add{display:none}.content{padding:25px 16px 42px}.page-intro{align-items:start;flex-direction:column}.stat-grid{gap:10px}.stat{padding:15px}.stat-num{font-size:26px}.routine-grid,.settings-grid{grid-template-columns:1fr}.demo-banner{padding:12px 16px;align-items:start;flex-direction:column}.board-secondary{gap:12px}.footer{padding:12px 16px 25px}.form-grid{grid-template-columns:1fr}.dialog-form{padding:21px}}
+@media(max-width:420px){.btn{padding:10px 12px}.page-actions{flex-wrap:wrap}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stat-top{font-size:11px}.stat-icon{display:none}.header-actions .btn-primary{font-size:11px}.quick-actions{grid-template-columns:1fr}.task-row{gap:7px}.task-row .chip{display:none}.board-row{padding:14px}.chat-messages{min-height:280px}.chat-inputbar{padding:10px}}
+/* Stormskim v2: capture-first tasks, completion history, task-level drafts */
+.quick-capture{background:#fff;border:1px solid #dceae6;box-shadow:0 8px 26px rgba(17,45,53,.06);padding:15px;border-radius:16px;margin:0 0 23px}
+.capture-main{display:flex;align-items:center;gap:11px}.capture-main>span{font-size:23px;color:var(--teal);font-weight:500}.capture-main input{flex:1;min-width:0;border:0;background:transparent;padding:13px 6px;color:var(--ink);font-size:16px;font-weight:600;outline-offset:3px}.capture-main input::placeholder{color:#9aabb5;font-weight:500}
+.capture-main .btn{white-space:nowrap;padding:12px 21px;font-size:13px}.capture-options{display:flex;align-items:center;gap:18px;border-top:1px solid #f1f3f5;padding:11px 4px 0;flex-wrap:wrap}.capture-options label{display:flex;align-items:center;gap:7px;color:#6f8394;font-size:12px;font-weight:700}.capture-options select{background:#eef7f3;border:1px solid #d6e8e1;border-radius:8px;padding:7px 9px;color:#287365;font-size:12px;max-width:220px}.capture-options .text-link{font-size:12px}.capture-hint{font-size:11px;color:#9aabb6;margin-left:auto}.advanced-task{border:1px solid #e2eaed;border-radius:10px;padding:12px 13px;margin:4px 0 15px}.advanced-task summary{cursor:pointer;font-size:12px;font-weight:800;color:#477e75;margin:0 0 9px}.advanced-task:not([open]) summary{margin:0}
+.task-row .task-info{flex:1 1 220px}.task-row .task-actions{flex:0 0 auto;display:flex;justify-content:flex-end;gap:5px;align-items:center}.task-row .task-actions .btn{font-size:11px}.task-row .task-title{font-size:14px}.task-row .task-sub{color:#7e91a0}.history-row{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #edf0f3}.history-row:last-child{border-bottom:0}.history-mark{display:grid;place-items:center;flex:0 0 27px;height:27px;border-radius:50%;background:#e1f5eb;color:#13825f;font-weight:900}.history-info{flex:1;min-width:0}.history-info strong{font-size:13px;display:block;overflow-wrap:anywhere}.history-info small{font-size:11px;color:#97a5b1;display:block;margin-top:5px}.history-actions{display:flex;gap:7px;flex-wrap:wrap;flex:0 0 auto}
+#draftDialog textarea{line-height:1.65;resize:vertical}.nav-count{font-variant-numeric:tabular-nums}
+@media(max-width:760px){.capture-hint{margin-left:0;width:100%}.task-row{align-items:flex-start;flex-wrap:wrap}.task-row .task-info{flex:1;min-width:150px}.task-row .task-actions{flex:1 1 100%;padding-left:30px;justify-content:flex-start}.history-row{flex-wrap:wrap}.history-actions{padding-left:39px;flex:1 1 100%}}
+@media(max-width:440px){.capture-main{gap:5px}.capture-main input{font-size:13px}.capture-main .btn{padding:11px 10px}.capture-options{gap:8px}.capture-options select{max-width:185px}.task-row .task-actions .btn{padding:8px 10px}}
+[hidden]{display:none!important}
+
+/* Stormskim v4 identity: Academy-inspired wind, sky, and warm-gold accents. */
+.brand-icon{font-family:Georgia,serif;font-size:26px;font-weight:700;background:linear-gradient(145deg,#ffdda0,#cf9b46);color:#1f426a;box-shadow:inset 0 1px 0 #fff5d7,0 5px 15px rgba(0,0,0,.13)}
+.brand strong{letter-spacing:-.05em}
+.sidebar{background:linear-gradient(180deg,#172b48 0%,#10213a 100%)}
+.privacy-dot{background:#e7ba6c}
+.mobile-brand{font-weight:700;color:#254968}
+.nav-item.active{box-shadow:inset 3px 0 0 #e4b86e}
+
+/* v5 — Aethermoor-inspired brand without game-like UI: storm navy, cloud white and compass gold. */
+:root{--nav:#10253f;--ink:#213956;--teal:#276c83;--blue:#4775a9;--teal-bright:#e9be79;--bg:#f3f7fb;--line:#e2eaf1;--shadow:0 9px 24px rgba(20,47,82,.055)}
+.sidebar{background:linear-gradient(175deg,#152d4d 0%,#0d1f37 95%);border-right:1px solid #344563}
+.brand{padding-bottom:35px}.brand-mark{width:43px;height:43px;box-shadow:0 8px 22px rgba(0,0,0,.12);border-radius:12px;flex-shrink:0}
+.brand strong{font-size:22px;letter-spacing:-.045em}.brand small{font-size:8px;letter-spacing:.115em;color:#aabbd1}
+.nav-item.active{background:#29405e;box-shadow:inset 3px 0 0 #e9be79}.nav-item:hover{background:#243a57}
+.mobile-brand{align-items:center;gap:8px}.mobile-brand img{width:27px;height:27px;border-radius:7px}
+.btn-primary{background:#2e668d}.btn-primary:hover{background:#204f71}
+.btn-soft{background:#e7f1f7;color:#315f82}.btn-soft:hover{background:#daeaf3}
+.eyebrow{color:#627e9b}.stat-icon{background:#e8f1f8;color:#396b94}.task-check{accent-color:#2d7691}
+.quick-capture{border:1px solid #dce7ef;box-shadow:0 13px 33px rgba(26,54,79,.065)}
+.capture-main>span{color:#be9457}.capture-options select{background:#eff5f8;border-color:#dde8ee;color:#2c6687}
+.filter.selected{background:#e8f2f8;border-color:#cee2ee;color:#286b8a}.chip.active{background:#e6f2f5;color:#237586}
+.bubble.assistant{background:#edf4f9;color:#2c526f}.bubble.user{background:#346c93}
+.callout,.suggestion{background:#edf4f9;color:#355a74;border-color:#dbe9f3}.callout p,.suggestion p{color:#55758c}
+.intro-storm{position:relative;overflow:hidden;background:linear-gradient(125deg,#132e50,#2b5681 73%,#3b6b8c);border:1px solid #355f84;border-radius:19px;padding:31px 34px;margin-bottom:24px;box-shadow:0 15px 37px rgba(17,40,73,.13);isolation:isolate}
+.intro-storm::before,.intro-storm::after{content:'';position:absolute;right:-55px;top:-91px;width:300px;height:300px;border:2px solid rgba(234,196,127,.28);border-radius:50%;z-index:-1;pointer-events:none}
+.intro-storm::after{width:215px;height:215px;right:-11px;top:-46px;border-color:rgba(191,226,237,.14)}
+.intro-storm .eyebrow{color:#f2cb86}.intro-storm h1{color:#fff;margin:0 0 8px}.intro-storm .lead{color:#d4e3f0}.intro-storm .btn-soft{background:#f3f5f3;color:#28577a}
+.intro-storm .page-actions{position:relative}
+/* Companion: intentionally subordinate to work content, dismissible and keyboard accessible. */
+.companion-wrap{position:fixed;right:25px;bottom:21px;z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:10px;pointer-events:none}
+.companion-wrap>*{pointer-events:auto}
+.companion-launcher{position:relative;width:92px;height:92px;padding:0;border:0;border-radius:50%;background:radial-gradient(circle at 50% 35%,#f7fcfb 15%,#d8eaf2 60%,#c5d6e5 100%);box-shadow:0 10px 30px rgba(15,43,75,.23),inset 0 0 0 2px rgba(228,191,124,.85);display:grid;place-items:center;transition:transform .2s ease,box-shadow .2s ease}
+.companion-launcher:hover{transform:translateY(-3px);box-shadow:0 13px 33px rgba(15,43,75,.3),inset 0 0 0 2px #e4ba6f}
+.companion-launcher img{position:relative;z-index:1;width:104px;height:104px;max-width:none;filter:drop-shadow(0 4px 3px rgba(26,61,93,.08));animation:niarel-float 4.5s ease-in-out infinite}
+.companion-halo{position:absolute;inset:-4px;border:1px solid rgba(231,194,123,.65);border-radius:50%;box-shadow:0 0 25px rgba(231,194,123,.13)}
+.companion-status{width:13px;height:13px;position:absolute;right:6px;bottom:10px;background:#51aa8a;border:3px solid #fff;border-radius:50%;z-index:2}
+.companion-tip{display:flex;gap:8px;align-items:center;padding:10px 12px;max-width:245px;border-radius:13px 13px 3px 13px;box-shadow:0 8px 28px rgba(20,43,73,.14);background:#fff;color:#33526e;font-weight:650;font-size:12px;border:1px solid #e1eaf0}
+.companion-tip button{border:0;border-radius:7px;background:#f3f5f7;color:#698197;font-size:17px;line-height:1;padding:2px 5px}
+.companion-panel{width:min(370px,calc(100vw - 34px));max-height:min(560px,calc(100dvh - 125px));border:1px solid #d6e5ee;background:white;border-radius:18px;box-shadow:0 21px 65px rgba(16,43,71,.23);overflow:hidden;display:flex;flex-direction:column}
+.companion-header{display:flex;align-items:center;gap:9px;padding:12px 13px;background:linear-gradient(105deg,#17375a,#325f88);color:#fff;border-bottom:2px solid #d5ac65}
+.companion-header img{width:49px;height:49px;object-fit:contain;background:#d6e9ef;border:1px solid #d0b77a;border-radius:50%}
+.companion-header div{min-width:0;flex:1}.companion-header strong{display:block;font-size:15px}.companion-header small{display:block;font-size:10px;line-height:1.45;color:#d6e6f1;margin-top:4px}
+.companion-close{align-self:flex-start;width:28px;height:28px;border:0;color:white;background:rgba(255,255,255,.12);border-radius:7px;font-size:21px}
+.companion-conversation{padding:16px 14px;display:flex;flex-direction:column;gap:9px;overflow:auto;min-height:120px;max-height:270px;scrollbar-width:thin;overscroll-behavior:contain}
+.companion-reply,.companion-user{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.55;padding:11px 13px;border-radius:12px;max-width:96%}
+.companion-reply{background:#edf4f8;color:#355773;align-self:flex-start;border-bottom-left-radius:3px}
+.companion-user{background:#2f678d;color:white;align-self:flex-end;border-bottom-right-radius:3px}
+.companion-suggestions{display:flex;gap:6px;flex-wrap:wrap;padding:0 13px 12px}
+.companion-suggestions button{font-size:11px;font-weight:700;border:1px solid #d4e2ed;background:#f6f9fb;border-radius:15px;padding:7px 9px;color:#375f7d}
+.companion-suggestions button:hover{background:#e7f1f7}
+.companion-inputbar{padding:10px 12px;border-top:1px solid #e5edf2;display:flex;gap:7px}
+.companion-inputbar input{flex:1;min-width:0;border:1px solid #d9e5ed;background:white;padding:10px 12px;border-radius:10px;font-size:12px}
+.companion-inputbar button{background:#326d93;color:white;border:0;border-radius:10px;width:36px;font-size:18px}
+.companion-disclosure{border-top:1px solid #edf1f5;padding:9px 12px;color:#8394a3;font-size:10px;line-height:1.5}
+.companion-disclosure button{background:none;border:0;padding:0;color:#376f94;font-weight:700;text-decoration:underline;cursor:pointer}
+@keyframes niarel-float{0%,100%{transform:translateY(1px) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+@media(prefers-reduced-motion:reduce){.companion-launcher img{animation:none}.companion-launcher{transition:none}}
+@media(max-width:760px){.mobile-brand{display:flex}.intro-storm{padding:24px 20px}.companion-wrap{right:12px;bottom:12px}.companion-launcher{width:70px;height:70px}.companion-launcher img{width:83px;height:83px}.companion-panel{max-height:min(520px,calc(100dvh - 95px))}.companion-tip{max-width:210px}}
+
+/* v6 — simpler organizer navigation and accessible reminders planner. */
+.sidebar-label{letter-spacing:.12em}
+.planner-groups{display:grid;gap:17px}
+.planner-guide{display:flex;gap:16px;align-items:center;background:#e9f2f7;border:1px solid #dce9f2;border-radius:17px;padding:18px 20px;margin-bottom:22px;color:#2a5372}
+.planner-guide-icon{display:grid;place-items:center;flex-shrink:0;width:48px;height:48px;background:#d9e8f5;border-radius:14px;color:#2d668d;font-size:26px}
+.planner-guide div:nth-child(2){flex:1;min-width:0}
+.planner-guide strong{font-size:14px}
+.planner-guide p{margin:5px 0 0;line-height:1.55;font-size:12px;color:#56758d}
+.planner-section .card-head{align-items:start;margin-bottom:10px}
+.planner-description{color:#8a9aaa;font-size:12px;margin-top:5px}
+.planner-item{display:flex;align-items:center;gap:13px;border-bottom:1px solid #ecf1f5;padding:15px 0;flex-wrap:wrap}
+.planner-item:last-child{border-bottom:0}
+.planner-item-text{min-width:190px;flex:1}
+.planner-item-text strong{display:block;font-size:13px;overflow-wrap:anywhere}
+.planner-item-text small{display:block;color:#7890a5;margin-top:6px;font-size:11px}
+.planner-item-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.planner-empty{padding:17px 0;color:#8b9caa;font-size:12px}
+.planner-mini{display:flex;justify-content:space-between;align-items:center;gap:9px;padding:13px 0;border-bottom:1px solid #edf1f5}
+.planner-mini:last-child{border:0}.planner-mini div{min-width:0}.planner-mini strong{display:block;font-size:13px}.planner-mini small{display:block;color:#7b8da0;font-size:11px;margin-top:5px}
+@media(max-width:760px){.planner-guide{align-items:flex-start;flex-wrap:wrap;padding:15px}.planner-item{align-items:flex-start}.planner-item-actions{width:100%;padding-left:29px}.planner-item-text{min-width:0}.planner-item-actions .btn{padding:7px 9px}}
+
+/* v7 — simple natural-language capture and intentional assistant planning. */
+.capture-label{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 5px 8px;flex-wrap:wrap}
+.capture-label span{color:#244c6f;font-size:13px;font-weight:850}
+.capture-label small{color:#7e91a5;font-size:11px}
+.niarel-plan-strip{display:flex;align-items:center;gap:15px;padding:15px 18px;background:#e8f1f8;border:1px solid #d6e5f0;border-radius:14px;margin:-2px 0 22px;color:#305777}
+.niarel-plan-strip div{flex:1;min-width:0}.niarel-plan-strip strong{font-size:13px}.niarel-plan-strip p{color:#6f8aa0;font-size:11px;margin:4px 0 0}
+.plan-sparkle{display:grid;place-items:center;background:#fff9e8;border:1px solid #edd5a8;color:#b48746;border-radius:12px;width:42px;height:42px;flex:0 0 auto;font-size:25px}
+.suggested-steps{padding-left:22px;margin:12px 0 18px;display:grid;gap:8px;color:#416279;font-size:13px;line-height:1.45}
+.suggested-steps li{padding-left:3px}
+@media(max-width:640px){.capture-label{align-items:flex-start;flex-direction:column;gap:2px}.niarel-plan-strip{align-items:flex-start;flex-wrap:wrap}.niarel-plan-strip .btn{margin-left:55px}}
+
+/* v8: actionable reminder inbox and subtle installation controls */
+.notification-bell{position:relative;min-width:42px;height:42px;border:1px solid #dce5ef;border-radius:13px;background:#f5f8fc;color:#315b80;font-size:23px;line-height:1}.notification-bell:hover{background:#e9f1f9}.notification-bell span:not([hidden]){position:absolute;top:-6px;right:-6px;min-width:19px;height:19px;border-radius:20px;background:#c74d4d;color:white;display:grid;place-items:center;font-size:10px;font-weight:800;border:2px solid white}
+.reminder-inbox{border:1px solid #ebd59b!important;background:linear-gradient(135deg,#fffaf1,#fff)!important;margin-bottom:20px;box-shadow:0 7px 23px rgba(139,104,42,.07)}
+.reminder-inbox .eyebrow{color:#a77a28}.reminder-card{padding:14px 0;border-top:1px solid #f0e8d3;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.reminder-card-copy{flex:1;min-width:175px;display:flex;flex-direction:column;gap:5px}.reminder-card-copy strong{font-size:14px}.reminder-card-copy small{color:#71859a;font-size:11px}.reminder-type{font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.1em;color:#a87c2d}.reminder-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.reminder-actions .btn{padding:9px 10px}.approval-card{margin:14px 0;border-color:#ccdbee}.approval-card p{line-height:1.9}.install-note{margin:16px 0}.install-note .btn{margin-top:8px}
+@media(max-width:760px){.notification-bell{min-width:37px;height:37px}.today{display:none}.reminder-actions{width:100%}.reminder-actions .btn{flex:0 0 auto}.reminder-card{align-items:start}}
+
+/* v9: unobtrusive first-use guide and assistant preferences */
+.welcome-card{display:flex;gap:19px;align-items:flex-start;padding:20px 22px;margin-bottom:18px;background:linear-gradient(105deg,#eef5fb,#fbf8ed);border:1px solid #d3e2ee;border-radius:17px;box-shadow:0 9px 28px rgba(25,51,91,.05)}
+.welcome-symbol{flex:0 0 48px;height:48px;display:grid;place-items:center;border-radius:14px;background:#dceafa;color:#426b9f;font-size:30px}
+.welcome-copy{flex:1;min-width:0}.welcome-copy h2{font-size:18px;margin:4px 0 8px;color:#213b5a}.welcome-copy p:not(.eyebrow){color:#657d95;font-size:13px;line-height:1.6;margin-bottom:12px}.welcome-actions{display:flex;gap:9px;flex-wrap:wrap}
+.setting-choice{display:grid;gap:7px;margin:14px 0;font-size:12px;color:#48657f;font-weight:700}.setting-choice select{border:1px solid #d7e1eb;border-radius:9px;background:white;padding:11px;font:inherit;color:#29455e}
+.niarel-plan-strip p{line-height:1.55}.chat-command{overflow-wrap:anywhere}
+@media(max-width:480px){.welcome-card{padding:15px;gap:9px}.welcome-symbol{flex-basis:37px;height:37px;font-size:23px}.welcome-copy h2{font-size:16px}.welcome-actions .btn{flex:1 1 auto}}
+
+</style>
+  
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand"><img class="brand-mark" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlN0b3Jtc2tpbSBjaXJjdWxhciBydW5lIGdhdGUgYW5kIGNvbXBhc3MgbWFyayI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIHN0b3AtY29sb3I9IiMyOTRiNzYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwYzIxM2YiLz48L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJtZXRhbCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIHN0b3AtY29sb3I9IiNmZmYwYzYiLz48c3RvcCBvZmZzZXQ9Ii40NCIgc3RvcC1jb2xvcj0iI2U2YmI3NiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2JkODc0MSIvPjwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IndpbmQiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZDRmNWYyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNmFhZGRhIi8+PC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEyOCIgaGVpZ2h0PSIxMjgiIHJ4PSIyOSIgZmlsbD0idXJsKCNza3kpIi8+CiAgPGNpcmNsZSBjeD0iNjQiIGN5PSI2NCIgcj0iNDQiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNtZXRhbCkiIHN0cm9rZS13aWR0aD0iNCIvPgogIDxjaXJjbGUgY3g9IjY0IiBjeT0iNjQiIHI9IjM2IiBmaWxsPSJub25lIiBzdHJva2U9IiNhOGNkZTQiIHN0cm9rZS1vcGFjaXR5PSIuMzUiIHN0cm9rZS13aWR0aD0iMS42IiBzdHJva2UtZGFzaGFycmF5PSIyIDciLz4KICA8Y2lyY2xlIGN4PSI2NCIgY3k9IjE4IiByPSI0LjIiIGZpbGw9IiNmNmNjODMiLz48Y2lyY2xlIGN4PSIxMTAiIGN5PSI2NCIgcj0iNC4yIiBmaWxsPSIjZjZjYzgzIi8+PGNpcmNsZSBjeD0iNjQiIGN5PSIxMTAiIHI9IjQuMiIgZmlsbD0iI2Y2Y2M4MyIvPjxjaXJjbGUgY3g9IjE4IiBjeT0iNjQiIHI9IjQuMiIgZmlsbD0iI2Y2Y2M4MyIvPgogIDxwYXRoIGQ9Ik0zMyA2OWMxMi0xNSAyMi0yMSAzOS0xOSA5IDEgMTUgNSAyMyAxMU0zNCA4MGMxNS03IDI5LTcgNDQtMiA4IDMgMTMgMyAxNyAwIiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjd2luZCkiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0ibTcxIDI5IDQgMjAgMjAgNi0yMCA2LTQgMjAtNS0yMC0yMC02IDIwLTZaIiBmaWxsPSJ1cmwoI21ldGFsKSIgdHJhbnNmb3JtPSJyb3RhdGUoMTUgNzEgNTUpIi8+CiAgPGNpcmNsZSBjeD0iNzEiIGN5PSI1NSIgcj0iMy44IiBmaWxsPSIjMjIzYTU5Ii8+Cjwvc3ZnPgo=" alt="" aria-hidden="true"><div><strong>Stormskim</strong><small>YOUR TASKS. YOUR MOMENTUM. <span class="brand-version">9.0</span></small></div></div>
+      <div class="sidebar-label">YOUR ORGANIZER</div>
+      <nav class="nav" aria-label="Sections">
+        <button class="nav-item active" data-view="dashboard"><span aria-hidden="true">◫</span> Overview</button>
+        <button class="nav-item" data-view="tasks"><span aria-hidden="true">☑</span> My Tasks <span id="taskBadge" class="nav-count"></span></button>
+        <button class="nav-item" data-view="planner"><span aria-hidden="true">◷</span> My Planner <span id="plannerBadge" class="nav-count"></span></button>
+        <button class="nav-item" data-view="routines"><span aria-hidden="true">↻</span> My Routines</button>
+        <button class="nav-item" data-view="history"><span aria-hidden="true">✓</span> History <span id="historyBadge" class="nav-count"></span></button>
+        <button class="nav-item" data-view="assistant"><span aria-hidden="true">✧</span> Ask Niarel</button>
+      </nav>
+      <div class="sidebar-label second-label">PREFERENCES</div>
+      <nav class="nav"><button class="nav-item" data-view="settings"><span aria-hidden="true">⚙</span> Settings & Data</button></nav>
+      <div class="sidebar-bottom">
+        <div class="privacy-pill"><span class="privacy-dot"></span> Local-only organizer</div>
+        <p>Free forever · No account · No server</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlN0b3Jtc2tpbSBjaXJjdWxhciBydW5lIGdhdGUgYW5kIGNvbXBhc3MgbWFyayI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIHN0b3AtY29sb3I9IiMyOTRiNzYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwYzIxM2YiLz48L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJtZXRhbCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIHN0b3AtY29sb3I9IiNmZmYwYzYiLz48c3RvcCBvZmZzZXQ9Ii40NCIgc3RvcC1jb2xvcj0iI2U2YmI3NiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2JkODc0MSIvPjwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IndpbmQiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZDRmNWYyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNmFhZGRhIi8+PC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEyOCIgaGVpZ2h0PSIxMjgiIHJ4PSIyOSIgZmlsbD0idXJsKCNza3kpIi8+CiAgPGNpcmNsZSBjeD0iNjQiIGN5PSI2NCIgcj0iNDQiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNtZXRhbCkiIHN0cm9rZS13aWR0aD0iNCIvPgogIDxjaXJjbGUgY3g9IjY0IiBjeT0iNjQiIHI9IjM2IiBmaWxsPSJub25lIiBzdHJva2U9IiNhOGNkZTQiIHN0cm9rZS1vcGFjaXR5PSIuMzUiIHN0cm9rZS13aWR0aD0iMS42IiBzdHJva2UtZGFzaGFycmF5PSIyIDciLz4KICA8Y2lyY2xlIGN4PSI2NCIgY3k9IjE4IiByPSI0LjIiIGZpbGw9IiNmNmNjODMiLz48Y2lyY2xlIGN4PSIxMTAiIGN5PSI2NCIgcj0iNC4yIiBmaWxsPSIjZjZjYzgzIi8+PGNpcmNsZSBjeD0iNjQiIGN5PSIxMTAiIHI9IjQuMiIgZmlsbD0iI2Y2Y2M4MyIvPjxjaXJjbGUgY3g9IjE4IiBjeT0iNjQiIHI9IjQuMiIgZmlsbD0iI2Y2Y2M4MyIvPgogIDxwYXRoIGQ9Ik0zMyA2OWMxMi0xNSAyMi0yMSAzOS0xOSA5IDEgMTUgNSAyMyAxMU0zNCA4MGMxNS03IDI5LTcgNDQtMiA4IDMgMTMgMyAxNyAwIiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjd2luZCkiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0ibTcxIDI5IDQgMjAgMjAgNi0yMCA2LTQgMjAtNS0yMC0yMC02IDIwLTZaIiBmaWxsPSJ1cmwoI21ldGFsKSIgdHJhbnNmb3JtPSJyb3RhdGUoMTUgNzEgNTUpIi8+CiAgPGNpcmNsZSBjeD0iNzEiIGN5PSI1NSIgcj0iMy44IiBmaWxsPSIjMjIzYTU5Ii8+Cjwvc3ZnPgo=" alt=""><strong>Stormskim</strong></div>
+        <div class="breadcrumb" id="breadcrumb">My Organizer <span>/</span> Overview</div>
+        <div class="header-actions">
+          <span class="today" id="todayText"></span>
+          <button class="notification-bell" type="button" data-action="open-alerts" aria-label="See reminders needing attention" title="Due reminders">🔔 <span id="alertCount" hidden>0</span></button>
+          <button class="btn btn-primary" data-action="new-task">+ New task</button>
+        </div>
+      </header>
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <div id="demoBanner" class="demo-banner" hidden>
+        <div><strong>Sample tasks & routines</strong> — Everything shown initially is fictional demonstration data. Your changes stay in this browser.</div>
+        <button class="btn btn-small btn-white" data-action="clear-demo">Start fresh</button>
+      </div>
+      <section id="view" class="content" aria-live="polite"></section>
+      <footer class="footer">Stormskim v9 · Your personal organizer · Free local-first prototype · <span>No emails sent, no external connections</span></footer>
+    </main>
+  </div>
+
+  <dialog id="taskDialog" aria-labelledby="taskDialogTitle">
+    <form id="taskForm" class="dialog-form">
+      <div class="dialog-title"><div><p class="eyebrow">KEEP THINGS SIMPLE</p><h2 id="taskDialogTitle">New task</h2></div><button type="button" class="icon-btn" data-action="close-dialog" aria-label="Close">×</button></div>
+      <input type="hidden" name="id" id="taskId">
+      <label>Task title <input name="title" required maxlength="160" placeholder="e.g. Pick up a prescription" autofocus></label>
+      <details class="advanced-task"><summary>Add a reminder, note or message (optional)</summary>
+      <label>Details <textarea name="notes" rows="2" maxlength="1000" placeholder="Optional context — only add what's useful"></textarea></label>
+      <div class="form-grid">
+        <label>Due date <input name="due" type="date"></label>
+        <label>Priority <select name="priority"><option value="high">High</option><option value="medium" selected>Medium</option><option value="low">Low</option></select></label>
+      </div>
+      <div class="form-grid"><label>Remind me at <input name="remindAt" type="datetime-local"></label><label>Repeat reminder <select name="reminderCadence"><option value="daily">Daily until complete</option><option value="once">Once only</option><option value="none">Off</option></select></label></div>
+      <label>Second reminder if still open (optional) <input name="followupAt" type="datetime-local"><small class="hint">Only appears if the task is not completed by this time. Alerts work while the app is open.</small></label>
+      <label>Contact email (optional) <input name="recipient" type="email" maxlength="200" placeholder="For drafting a follow-up; no email is sent"></label>
+      </details>
+      <div class="dialog-actions"><button type="button" class="btn btn-quiet" data-action="close-dialog">Cancel</button><button class="btn btn-primary" type="submit">Save task</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="draftDialog" aria-labelledby="draftDialogTitle">
+    <form class="dialog-form" id="draftForm">
+      <div class="dialog-title"><div><p class="eyebrow">PREPARED FOR YOU · NOT SENT</p><h2 id="draftDialogTitle">Suggested follow-up</h2></div><button class="icon-btn" type="button" data-action="close-dialog" aria-label="Close">×</button></div>
+      <label>Message style <select id="draftMode"><option value="email">Email</option><option value="text">Short text / message</option></select></label>
+      <label>Recipient (optional) <input type="email" id="draftRecipient" placeholder="name@example.com"></label>
+      <label>Subject <input id="draftSubject" maxlength="200"></label>
+      <label>Editable message <textarea id="taskDraftBody" rows="9" maxlength="3000"></textarea></label>
+      <p class="hint">Suggested wording is based on the task title and your notes, not on private inbox content. Check all details before sending.</p>
+      <div class="dialog-actions"><button class="btn btn-outline" type="button" data-action="copy-task-draft">Copy</button><button class="btn btn-primary" type="button" data-action="open-mailto">Open email app</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="routineDialog" aria-labelledby="routineDialogTitle">
+    <form id="routineForm" class="dialog-form">
+      <div class="dialog-title"><div><p class="eyebrow">ROUTINE BUILDER</p><h2 id="routineDialogTitle">New routine</h2></div><button type="button" class="icon-btn" data-action="close-dialog" aria-label="Close">×</button></div>
+      <input type="hidden" name="id" id="routineId">
+      <label>Routine name <input name="name" required maxlength="100" placeholder="e.g. My morning reset"></label>
+      <label>Repeat <select name="cadence"><option value="daily">Every day</option><option value="weekdays">Weekdays</option><option value="weekly">Every Monday</option><option value="manual">Manual only</option></select></label>
+      <label>Checklist steps — one per line <textarea name="steps" rows="5" required maxlength="2000" placeholder="Make the bed&#10;Review today’s tasks&#10;Take a short walk"></textarea></label>
+      <label class="toggle-line"><input type="checkbox" name="enabled" checked> Enabled (creates tasks on days you open this app)</label>
+      <div class="dialog-actions"><button type="button" class="btn btn-quiet" data-action="close-dialog">Cancel</button><button type="submit" class="btn btn-primary">Save routine</button></div>
+    </form>
+  </dialog>
+  <!-- Niarel is a decorative character-inspired avatar, not a claim of an autonomous cloud agent. -->
+  <div class="companion-wrap" id="companionWrap">
+    <div class="companion-tip" id="companionTip" role="status"><span>Hi! I'm Niarel. Need a hand?</span><button type="button" id="companionDismissTip" aria-label="Dismiss greeting">×</button></div>
+    <section class="companion-panel" id="companionPanel" aria-label="Niarel quick assistant" hidden>
+      <header class="companion-header">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMjIwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Ik5pYXJlbCwgYSBmcmllbmRseSBibHVlIGFuZCBnb2xkIGZsb2F0aW5nIHN0b3JtIGRyYWdvbiI+CjxkZWZzPgogIDxyYWRpYWxHcmFkaWVudCBpZD0iYXVyYSI+PHN0b3Agc3RvcC1jb2xvcj0iI2Q4ZjJmNiIgc3RvcC1vcGFjaXR5PSIuOSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Q4ZjJmNiIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9ImJvZHkiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjNTU4OWJjIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzMxNWI4ZSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE5MzQ1MiIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJ3aW5ncyI+PHN0b3Agc3RvcC1jb2xvcj0iI2JjZTllYSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzVmYTNiZiIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZmNGM5Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZDdhYTYwIi8+PC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8Y2lyY2xlIGN4PSIxMDkiIGN5PSIxMTAiIHI9IjEwNSIgZmlsbD0idXJsKCNhdXJhKSIvPgo8ZWxsaXBzZSBjeD0iMTA5IiBjeT0iMTkzIiByeD0iNTMiIHJ5PSIxMCIgZmlsbD0iIzUyNzc5NSIgb3BhY2l0eT0iLjE0Ii8+CjwhLS0gZmxvYXRpbmcgdGFpbCBjdXJsaW5nIGFyb3VuZCBib2R5IC0tPgo8cGF0aCBkPSJNMTQxIDE0M0MxODEgMTM5IDE5NyAxNzQgMTcxIDE4N2MtMTMgNi0yMi0xLTIxLTEyIiBmaWxsPSJub25lIiBzdHJva2U9IiMyOTQ4NmEiIHN0cm9rZS13aWR0aD0iMTciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTQzIDE0NmMzMS02IDQ4IDIzIDMwIDM3IiBmaWxsPSJub25lIiBzdHJva2U9IiM2YmEyYzEiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNiIvPgo8IS0tIGx1bWlub3VzIGZpbnMgLyB3aW5ncyAtLT4KPHBhdGggZD0iTTkwIDExN0M0NSA4NyAyOSA4MiAxOSA4OWMxMyAxMiAxNSAzMCAzMCAzOC0xNSAwLTIzIDktMjMgOSAyNCAxOSA0OCAxNiA3NSAwWiIgZmlsbD0idXJsKCN3aW5ncykiIHN0cm9rZT0iIzMxNmI4ZSIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik0xMzIgMTExYzM5LTM1IDU3LTMzIDY1LTI3LTEyIDE4LTExIDMwLTI0IDQyIDE0LTQgMjAgMyAyMCAzLTE4IDIxLTQxIDIzLTY5IDZaIiBmaWxsPSJ1cmwoI3dpbmdzKSIgc3Ryb2tlPSIjMzE2YjhlIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTM2IDEwMGMxOCAxMCAyOCAxOCA0NyAzME0xODMgOTZjLTE3IDExLTI5IDIxLTQ5IDMzIiBzdHJva2U9IiNlZmZjZmMiIHN0cm9rZS1vcGFjaXR5PSIuNyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz4KPCEtLSBib2R5IC0tPgo8cGF0aCBkPSJNNzUgMTMyYzItMjAgMTQtMzMgMzYtMzYgMjgtMyA0NSAxNyA0NiA0MyAxIDIxLTE5IDM5LTQ0IDM5LTI0IDAtNDItMjAtMzgtNDZaIiBmaWxsPSJ1cmwoI2JvZHkpIiBzdHJva2U9IiMyMDNjNWQiIHN0cm9rZS13aWR0aD0iNCIvPgo8cGF0aCBkPSJNMTA1IDExMGMxNy0zIDI4IDExIDI5IDI2IDMgMjItOSAzNC0yMiAzNy0xNS0xMS0xNy00MC03LTYzWiIgZmlsbD0iI2E4ZDVkZSIgb3BhY2l0eT0iLjczIi8+CjwhLS0gdGlueSBmZWV0IC0tPgo8cGF0aCBkPSJNODkgMTY5bC02IDEzIDE3LTEgNy0xME0xMzggMTY3bDcgMTUgMTQtNi0xMi0xNSIgZmlsbD0iIzMxNTg4MCIgc3Ryb2tlPSIjMjAzYzVkIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPCEtLSBoZWFkIC0tPgo8cGF0aCBkPSJNNjYgODVDNjIgNTQgODUgMzcgMTE1IDQyYzMwLTIgNTAgMjEgNDkgNDgtMSAyOS0yNyA1MS01NiA1MEM4MyAxMzggNjcgMTE2IDY2IDg1WiIgZmlsbD0idXJsKCNib2R5KSIgc3Ryb2tlPSIjMjAzYzVkIiBzdHJva2Utd2lkdGg9IjQiLz4KPCEtLSBob3JucyAtLT4KPHBhdGggZD0iTTgwIDUzYy05LTE0LTMtMjggMi0zMiAzIDEyIDEyIDE2IDIwIDE5TTEzMiA0MmM2LTE0IDE5LTE4IDI0LTE3LTMgMTItMyAyMy0xMSAzMyIgZmlsbD0idXJsKCNnb2xkKSIgc3Ryb2tlPSIjOWY3OTNkIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPCEtLSBjaGVlayBtdXp6bGUgLS0+CjxwYXRoIGQ9Ik03NiAxMDZjMTUgOCAyMyA5IDM4IDYgMTcgMSAzMCAxIDQxLTgtMiAyMC0xOCAzMC0zOCAzMC0xNyAwLTMzLTEwLTQxLTI4WiIgZmlsbD0iI2E4Y2JkNCIvPgo8ZWxsaXBzZSBjeD0iOTYiIGN5PSI5MCIgcng9IjguNSIgcnk9IjEwLjUiIGZpbGw9IiMwYzI5NDgiLz48ZWxsaXBzZSBjeD0iMTM2IiBjeT0iODkiIHJ4PSI4LjUiIHJ5PSIxMC41IiBmaWxsPSIjMGMyOTQ4Ii8+CjxjaXJjbGUgY3g9Ijk5IiBjeT0iODYiIHI9IjIuNyIgZmlsbD0id2hpdGUiLz48Y2lyY2xlIGN4PSIxMzkiIGN5PSI4NSIgcj0iMi43IiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSI4MiIgY3k9IjExMSIgcj0iNSIgZmlsbD0iI2U2YWFjMCIgb3BhY2l0eT0iLjgiLz48Y2lyY2xlIGN4PSIxNTIiIGN5PSIxMTEiIHI9IjUiIGZpbGw9IiNlNmFhYzAiIG9wYWNpdHk9Ii44Ii8+CjxwYXRoIGQ9Ik0xMTEgMTE0cTYgOCAxMiAwIiBzdHJva2U9IiMzNzVkN2EiIHN0cm9rZS13aWR0aD0iMy4zIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPCEtLSBtZWRhbGxpb24gLS0+CjxwYXRoIGQ9Ik0xMTcgMTQxdjEyIiBzdHJva2U9InVybCgjZ29sZCkiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjExNyIgY3k9IjE2MSIgcj0iMTEiIGZpbGw9InVybCgjZ29sZCkiIHN0cm9rZT0iIzdmNjMzYyIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBhdGggZD0ibTExOCAxNTMgMyA2LTMgOS0zLTlaIiBmaWxsPSIjMWY0Zjc4Ii8+CjwhLS0gc3Rvcm0gc3BhcmtsZXMgLS0+CjxwYXRoIGQ9Im0zOSA0OSA0IDEwIDEwIDQtMTAgNC00IDEwLTQtMTAtMTAtNCAxMC00Wm0xNDMgOTQgMyA3IDcgMy03IDMtMyA3LTMtNy03LTMgNy0zWiIgZmlsbD0iI2UxYjk3NyIvPgo8L3N2Zz4K" alt="Niarel the storm-dragon avatar">
+        <div><strong>Ask Niarel</strong><small>Your Aethermoor-inspired helper · Local mode</small></div>
+        <button type="button" class="companion-close" id="companionClose" aria-label="Close Niarel panel">×</button>
+      </header>
+      <div class="companion-conversation" id="companionConversation" role="log" aria-live="polite"><div class="companion-reply">Hey there! Tell me what to remember, or ask me to plan your day. Try “Call Mom tomorrow at 10 AM.”</div></div>
+      <div class="companion-suggestions">
+        <button type="button" data-companion-command="Plan my day">Plan my day</button>
+        <button type="button" data-companion-command="Show overdue tasks">Overdue tasks</button>
+        <button type="button" data-companion-command="Add task ">Add a task</button>
+      </div>
+      <form id="companionForm" class="companion-inputbar">
+        <label class="sr-only" for="companionInput">Message to Niarel</label>
+        <input id="companionInput" name="message" maxlength="500" autocomplete="off" placeholder="Try: Call Mom tomorrow at 10 AM" required>
+        <button type="submit" aria-label="Send message to Niarel">➤</button>
+      </form>
+      <div class="companion-disclosure">Local commands only · No messages sent · <button type="button" data-action="companion-full-assistant">Open full assistant</button></div>
+    </section>
+    <button type="button" class="companion-launcher" id="companionLauncher" aria-label="Open Niarel helper" aria-controls="companionPanel" aria-expanded="false">
+      <span class="companion-halo"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMjIwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Ik5pYXJlbCwgYSBmcmllbmRseSBibHVlIGFuZCBnb2xkIGZsb2F0aW5nIHN0b3JtIGRyYWdvbiI+CjxkZWZzPgogIDxyYWRpYWxHcmFkaWVudCBpZD0iYXVyYSI+PHN0b3Agc3RvcC1jb2xvcj0iI2Q4ZjJmNiIgc3RvcC1vcGFjaXR5PSIuOSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Q4ZjJmNiIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9ImJvZHkiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjNTU4OWJjIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzMxNWI4ZSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE5MzQ1MiIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJ3aW5ncyI+PHN0b3Agc3RvcC1jb2xvcj0iI2JjZTllYSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzVmYTNiZiIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZmNGM5Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZDdhYTYwIi8+PC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8Y2lyY2xlIGN4PSIxMDkiIGN5PSIxMTAiIHI9IjEwNSIgZmlsbD0idXJsKCNhdXJhKSIvPgo8ZWxsaXBzZSBjeD0iMTA5IiBjeT0iMTkzIiByeD0iNTMiIHJ5PSIxMCIgZmlsbD0iIzUyNzc5NSIgb3BhY2l0eT0iLjE0Ii8+CjwhLS0gZmxvYXRpbmcgdGFpbCBjdXJsaW5nIGFyb3VuZCBib2R5IC0tPgo8cGF0aCBkPSJNMTQxIDE0M0MxODEgMTM5IDE5NyAxNzQgMTcxIDE4N2MtMTMgNi0yMi0xLTIxLTEyIiBmaWxsPSJub25lIiBzdHJva2U9IiMyOTQ4NmEiIHN0cm9rZS13aWR0aD0iMTciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTQzIDE0NmMzMS02IDQ4IDIzIDMwIDM3IiBmaWxsPSJub25lIiBzdHJva2U9IiM2YmEyYzEiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNiIvPgo8IS0tIGx1bWlub3VzIGZpbnMgLyB3aW5ncyAtLT4KPHBhdGggZD0iTTkwIDExN0M0NSA4NyAyOSA4MiAxOSA4OWMxMyAxMiAxNSAzMCAzMCAzOC0xNSAwLTIzIDktMjMgOSAyNCAxOSA0OCAxNiA3NSAwWiIgZmlsbD0idXJsKCN3aW5ncykiIHN0cm9rZT0iIzMxNmI4ZSIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik0xMzIgMTExYzM5LTM1IDU3LTMzIDY1LTI3LTEyIDE4LTExIDMwLTI0IDQyIDE0LTQgMjAgMyAyMCAzLTE4IDIxLTQxIDIzLTY5IDZaIiBmaWxsPSJ1cmwoI3dpbmdzKSIgc3Ryb2tlPSIjMzE2YjhlIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTM2IDEwMGMxOCAxMCAyOCAxOCA0NyAzME0xODMgOTZjLTE3IDExLTI5IDIxLTQ5IDMzIiBzdHJva2U9IiNlZmZjZmMiIHN0cm9rZS1vcGFjaXR5PSIuNyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz4KPCEtLSBib2R5IC0tPgo8cGF0aCBkPSJNNzUgMTMyYzItMjAgMTQtMzMgMzYtMzYgMjgtMyA0NSAxNyA0NiA0MyAxIDIxLTE5IDM5LTQ0IDM5LTI0IDAtNDItMjAtMzgtNDZaIiBmaWxsPSJ1cmwoI2JvZHkpIiBzdHJva2U9IiMyMDNjNWQiIHN0cm9rZS13aWR0aD0iNCIvPgo8cGF0aCBkPSJNMTA1IDExMGMxNy0zIDI4IDExIDI5IDI2IDMgMjItOSAzNC0yMiAzNy0xNS0xMS0xNy00MC03LTYzWiIgZmlsbD0iI2E4ZDVkZSIgb3BhY2l0eT0iLjczIi8+CjwhLS0gdGlueSBmZWV0IC0tPgo8cGF0aCBkPSJNODkgMTY5bC02IDEzIDE3LTEgNy0xME0xMzggMTY3bDcgMTUgMTQtNi0xMi0xNSIgZmlsbD0iIzMxNTg4MCIgc3Ryb2tlPSIjMjAzYzVkIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPCEtLSBoZWFkIC0tPgo8cGF0aCBkPSJNNjYgODVDNjIgNTQgODUgMzcgMTE1IDQyYzMwLTIgNTAgMjEgNDkgNDgtMSAyOS0yNyA1MS01NiA1MEM4MyAxMzggNjcgMTE2IDY2IDg1WiIgZmlsbD0idXJsKCNib2R5KSIgc3Ryb2tlPSIjMjAzYzVkIiBzdHJva2Utd2lkdGg9IjQiLz4KPCEtLSBob3JucyAtLT4KPHBhdGggZD0iTTgwIDUzYy05LTE0LTMtMjggMi0zMiAzIDEyIDEyIDE2IDIwIDE5TTEzMiA0MmM2LTE0IDE5LTE4IDI0LTE3LTMgMTItMyAyMy0xMSAzMyIgZmlsbD0idXJsKCNnb2xkKSIgc3Ryb2tlPSIjOWY3OTNkIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPCEtLSBjaGVlayBtdXp6bGUgLS0+CjxwYXRoIGQ9Ik03NiAxMDZjMTUgOCAyMyA5IDM4IDYgMTcgMSAzMCAxIDQxLTgtMiAyMC0xOCAzMC0zOCAzMC0xNyAwLTMzLTEwLTQxLTI4WiIgZmlsbD0iI2E4Y2JkNCIvPgo8ZWxsaXBzZSBjeD0iOTYiIGN5PSI5MCIgcng9IjguNSIgcnk9IjEwLjUiIGZpbGw9IiMwYzI5NDgiLz48ZWxsaXBzZSBjeD0iMTM2IiBjeT0iODkiIHJ4PSI4LjUiIHJ5PSIxMC41IiBmaWxsPSIjMGMyOTQ4Ii8+CjxjaXJjbGUgY3g9Ijk5IiBjeT0iODYiIHI9IjIuNyIgZmlsbD0id2hpdGUiLz48Y2lyY2xlIGN4PSIxMzkiIGN5PSI4NSIgcj0iMi43IiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSI4MiIgY3k9IjExMSIgcj0iNSIgZmlsbD0iI2U2YWFjMCIgb3BhY2l0eT0iLjgiLz48Y2lyY2xlIGN4PSIxNTIiIGN5PSIxMTEiIHI9IjUiIGZpbGw9IiNlNmFhYzAiIG9wYWNpdHk9Ii44Ii8+CjxwYXRoIGQ9Ik0xMTEgMTE0cTYgOCAxMiAwIiBzdHJva2U9IiMzNzVkN2EiIHN0cm9rZS13aWR0aD0iMy4zIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPCEtLSBtZWRhbGxpb24gLS0+CjxwYXRoIGQ9Ik0xMTcgMTQxdjEyIiBzdHJva2U9InVybCgjZ29sZCkiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjExNyIgY3k9IjE2MSIgcj0iMTEiIGZpbGw9InVybCgjZ29sZCkiIHN0cm9rZT0iIzdmNjMzYyIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBhdGggZD0ibTExOCAxNTMgMyA2LTMgOS0zLTlaIiBmaWxsPSIjMWY0Zjc4Ii8+CjwhLS0gc3Rvcm0gc3BhcmtsZXMgLS0+CjxwYXRoIGQ9Im0zOSA0OSA0IDEwIDEwIDQtMTAgNC00IDEwLTQtMTAtMTAtNCAxMC00Wm0xNDMgOTQgMyA3IDcgMy03IDMtMyA3LTMtNy03LTMgNy0zWiIgZmlsbD0iI2UxYjk3NyIvPgo8L3N2Zz4K" alt=""><span class="companion-status"></span>
+    </button>
+  </div>
+  <input type="file" id="importFile" accept="application/json,.json" hidden>
+<script>
+/* Stormskim v9 — personal assistant upgrade; all task data remains browser-local. */
+(() => {
+  'use strict';
+  const STORAGE_KEY = 'nudgetrail_free_v2';
+  const OLD_STORAGE_KEY = 'flowpilot_free_v1';
+  const VALID_VIEWS = ['dashboard','tasks','planner','routines','history','assistant','settings'];
+  const titles = {dashboard:'Overview',tasks:'My Tasks',planner:'My Planner',routines:'My Routines',history:'History',assistant:'Ask Niarel',settings:'Settings & Data'};
+  const $ = (selector) => document.querySelector(selector);
+  const uid = () => (globalThis.crypto?.randomUUID?.() || `id_${Date.now()}_${Math.random().toString(36).slice(2,9)}`);
+  const esc = (value) => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const iso = (date = new Date()) => {const d = new Date(date); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
+  const offsetDay = (days) => {const d=new Date();d.setDate(d.getDate()+days);return iso(d);};
+  const niceDate = (value) => {if(!value)return 'No date'; const parts=/^(\d{4})-(\d{2})-(\d{2})/.exec(value);if(!parts)return 'Unknown';const d=new Date(Number(parts[1]),Number(parts[2])-1,Number(parts[3]));return Number.isNaN(d.valueOf())?'Unknown':d.toLocaleDateString(undefined,{month:'short',day:'numeric'});};
+  const dateTime = (value) => value ? `${niceDate(value)} · ${(/T(\d\d:\d\d)/.exec(value)||[])[1]||''}` : 'Not set';
+  const readableWhen = (value) => {try{return new Date(value).toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});}catch{return '';}};
+  const validChoice = (v,choices,fallback)=>choices.includes(v)?v:fallback;
+  const short = (v,max=200) => String(v ?? '').slice(0,max);
+  function initialState(){
+    const mkTask=(title,priority,due,done=false)=>({id:uid(),title,priority,due,workspace:'personal',done,notes:'',recipient:'',remindAt:due?`${due}T09:00`:'',reminderCadence:'daily',remindedOn:'',completedAt:'',createdAt:new Date().toISOString(),source:'demo'});
+    return {version:9,welcomeDismissed:false,assistantTone:'friendly',planSuggestion:null,pendingTask:null,alerts:[],demo:true,view:'dashboard',taskFilter:'open',taskWorkspace:'all',loadFilter:'all',search:'',dismissed:[],tasks:[
+      mkTask('Pick up groceries','medium',offsetDay(0)),
+      mkTask('Email the dentist about an appointment','high',offsetDay(1)),
+      mkTask('Return library books','medium',offsetDay(2)),
+      mkTask('Plan a weekend walk','low',offsetDay(3))
+    ],loads:[],routines:[
+      {id:uid(),name:'Morning reset',cadence:'manual',workspace:'personal',steps:['Review today’s tasks','Drink a glass of water','Pick one priority'],enabled:false,lastAutoDate:'',createdAt:new Date().toISOString()}
+    ],logs:[],chat:[{id:uid(),who:'assistant',text:'Hi! I’m Niarel, your friendly Stormskim organizer. I can add tasks, check your reminders, help with routines, and draft messages. I’m a local rule-based assistant, not a connected AI service.'}],draft:''};
+  }
+  function emptyState(){const s=initialState();return {...s,demo:false,welcomeDismissed:false,assistantTone:'friendly',tasks:[],loads:[],routines:[],logs:[],dismissed:[],chat:[],draft:'',planSuggestion:null,pendingTask:null,alerts:[]};}
+  function cleanTask(t){const due=short(t.due,10);return {id:short(t.id||uid(),100),title:short(t.title,160),notes:short(t.notes,1000),recipient:short(t.recipient,200),due,remindAt:short(t.remindAt??(due?`${due}T09:00`:''),16),reminderCadence:validChoice(t.reminderCadence,['none','once','daily'],'daily'),remindedOn:short(t.remindedOn,10),completedAt:short(t.completedAt||(t.done?t.createdAt:''),40),priority:validChoice(t.priority,['high','medium','low'],'medium'),workspace:validChoice(t.workspace,['work','personal'],'work'),done:!!t.done,createdAt:short(t.createdAt,40),source:short(t.source,80),followupAt:short(t.followupAt,16),followupNotified:short(t.followupNotified,40),snoozedUntil:short(t.snoozedUntil,16)};}
+  function cleanLoad(l){const v={id:short(l.id||uid(),100)};for(const [name,max] of Object.entries({ref:60,lane:100,shipper:100,carrier:100,followup:10,appointment:20,arrival:20,departure:20,nextAction:200,notes:1000}))v[name]=short(l[name],max);v.status=validChoice(l.status,['Needs pickup','In transit','Delivered','Exception'],'Needs pickup');v.tracking=validChoice(l.tracking,['Unconfirmed','Active','Issue'],'Unconfirmed');v.fastpass=validChoice(l.fastpass,['Unknown','Ready','Not ready','Not applicable'],'Unknown');return v;}
+  function cleanRoutine(r){return {id:short(r.id||uid(),100),name:short(r.name,100),cadence:validChoice(r.cadence,['daily','weekdays','weekly','manual'],'manual'),workspace:validChoice(r.workspace,['work','personal'],'work'),steps:Array.isArray(r.steps)?r.steps.slice(0,30).map(x=>short(x,160)).filter(Boolean):[],enabled:!!r.enabled,lastAutoDate:short(r.lastAutoDate,10),createdAt:short(r.createdAt,40)};}
+  function cleanImported(x){if(!x||typeof x!=='object'||!Array.isArray(x.tasks)||!Array.isArray(x.loads)||!Array.isArray(x.routines)||!Array.isArray(x.logs))throw Error('This is not a Stormskim data export.');return {version:9,welcomeDismissed:!!x.welcomeDismissed,assistantTone:validChoice(x.assistantTone,['friendly','concise'],'friendly'),planSuggestion:null,pendingTask:null,alerts:Array.isArray(x.alerts)?x.alerts.slice(0,100).filter(a=>a&&a.taskId&&a.id).map(a=>({id:short(a.id,100),taskId:short(a.taskId,100),kind:short(a.kind,30),at:short(a.at,40)})):[],demo:!!x.demo,view:'dashboard',taskFilter:'open',taskWorkspace:'all',loadFilter:'all',search:'',dismissed:Array.isArray(x.dismissed)?x.dismissed.slice(0,500).map(s=>short(s,160)):[],tasks:x.tasks.slice(0,5000).map(cleanTask).filter(x=>x.title),loads:x.loads.slice(0,2000).map(cleanLoad).filter(x=>x.ref),routines:x.routines.slice(0,500).map(cleanRoutine).filter(x=>x.name&&x.steps.length),logs:x.logs.slice(0,500).map(l=>({id:short(l.id||uid(),100),type:short(l.type,40),title:short(l.title,160),at:short(l.at,40),demo:!!l.demo})),chat:Array.isArray(x.chat)?x.chat.slice(-100).map(c=>({id:uid(),who:c.who==='user'?'user':'assistant',text:short(c.text,3000)})):[],draft:''};}
+  let storageAvailable=true;
+  let state;
+  try{const saved=localStorage.getItem(STORAGE_KEY)||localStorage.getItem(OLD_STORAGE_KEY);state=saved?cleanImported(JSON.parse(saved)):emptyState();}catch(e){state=emptyState();storageAvailable=false;}
+  // cleanImported resets page filters on refresh; intentional: stored content survives.
+  function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));storageAvailable=true;}catch(e){storageAvailable=false;showNotice('Browser storage is unavailable or full. Export your data before closing this page.');}}
+  function showNotice(message){const n=$('#notice');n.textContent=message;n.hidden=false;clearTimeout(showNotice.timer);showNotice.timer=setTimeout(()=>n.hidden=true,5500);}
+  function addLog(type,title){state.logs.unshift({id:uid(),type,title:short(title,160),at:new Date().toISOString(),demo:false});state.logs=state.logs.slice(0,300);}
+  function isDueToday(s){return !!s&&s===iso();}
+  function overdue(s){return !!s&&s<iso();}
+  function upcomingReminder(){const d=new Date();d.setDate(d.getDate()+1);d.setHours(9,0,0,0);return `${iso(d)}T09:00`;}
+  function plannedReminder(choice){if(choice==='none')return '';const d=new Date();if(choice==='today'){d.setHours(17,0,0,0);if(d.getTime()<=Date.now())d.setTime(Date.now()+3600000);}else if(choice==='twodays'){d.setDate(d.getDate()+2);d.setHours(9,0,0,0);}else{d.setDate(d.getDate()+1);d.setHours(9,0,0,0);}return `${iso(d)}T${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;}
+  function addTask(raw){const reminder=raw.remindAt??upcomingReminder();const item=cleanTask({id:uid(),title:raw.title,notes:raw.notes||'',recipient:raw.recipient||'',due:raw.due||reminder.slice(0,10),remindAt:reminder,reminderCadence:raw.reminderCadence||'daily',remindedOn:'',completedAt:'',priority:raw.priority||'medium',workspace:raw.workspace||'personal',done:false,createdAt:new Date().toISOString(),source:raw.source||'manual',followupAt:raw.followupAt||'',followupNotified:'',snoozedUntil:''});if(!item.title.trim())return null;state.tasks.push(item);addLog('task-add',item.title);save();return item;}
+  // Niarel's parser is deterministic. Ambiguous clock times must be clarified rather than guessed.
+  const weekdays=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+  const months=['january','february','march','april','may','june','july','august','september','october','november','december'];
+  function atDate(date,h=9,m=0){const d=new Date(date);d.setHours(h,m,0,0);return `${iso(d)}T${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;}
+  function conciseWhen(dateValue){return new Date(dateValue).toLocaleString(undefined,{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});}
+  function parseTaskInput(input,preset='tomorrow',reference=new Date()){
+    let title=String(input||'').trim().replace(/[.!]+$/,'');
+    title=title.replace(/^(?:(?:could you|can you|please)\s+)?remind me to\s+/i,'').replace(/^(?:add|create|make)(?:\s+(?:a|new))?\s+task\s*[:\-]?\s*/i,'').replace(/^(?:i (?:need|have|want) to|don't forget to|remember to)\s+/i,'').trim();
+    if(!title)return {error:'Tell me what you want to do, such as “Call the dentist tomorrow at 10 AM.”'};
+    if(/\bevery\s+(?:day|morning|evening|weekday|week|month|sunday|monday|tuesday|wednesday|thursday|friday|saturday)\b/i.test(title))return {error:'That sounds like a repeating task. Open My Routines to choose a repeat schedule, or give me one specific date.'};
+    if(/\bnext week\b/i.test(title))return {error:'Which day next week? Try “Call the dentist next Tuesday at 10 AM.”'};
+    let explicitTime=false,hour=9,minute=0;
+    const clock=/\b(?:at|by)\s+(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)\b/i;
+    const standaloneClock=/\b(?:at|by)\s+(\d{1,2})(?::(\d{2}))?\s*(?!a\.?m\.?|p\.?m\.?)\b/i;
+    const timeMatch=title.match(clock);
+    if(timeMatch){
+      let hour12=Number(timeMatch[1]);minute=Number(timeMatch[2]||0);
+      if(hour12<1||hour12>12||minute>59)return {error:'That time looks invalid. Try “at 10 AM” or “at 3:30 PM”.'};
+      hour=hour12%12+(/p/i.test(timeMatch[3])?12:0);explicitTime=true;
+      title=title.replace(timeMatch[0],' ');
+    }else if(/\b(?:at|by)\s+(?:noon|midnight)\b/i.test(title)){
+      const match=title.match(/\b(?:at|by)\s+(noon|midnight)\b/i);hour=match[1].toLowerCase()==='noon'?12:0;minute=0;explicitTime=true;title=title.replace(match[0],' ');
+    }else if(standaloneClock.test(title)){
+      return {error:'Do you mean AM or PM? Please include it, like “tomorrow at 10 AM”. I won’t guess the time.'};
+    }
+    let referenceDay=new Date(reference.getFullYear(),reference.getMonth(),reference.getDate());
+    let when=null;let hasDate=false;let dayPhrase='';
+    const shift=(n)=>{const d=new Date(referenceDay);d.setDate(d.getDate()+n);return d;};
+    // Parse date phrases from most specific to least specific.
+    const isoDate=title.match(/\b(?:on\s+)?(20\d{2})-(\d{2})-(\d{2})\b/i);
+    const monthDate=title.match(new RegExp('\\b(?:on\\s+)?('+months.join('|')+')\\s+(\\d{1,2})(?:st|nd|rd|th)?(?:,?\\s+(20\\d{2}))?\\b','i'));
+    const slashDate=title.match(/\b(?:on\s+)?(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?\b/);
+    const daysOut=title.match(/\bin\s+(\d{1,3}|two|three)\s+days?\b/i);
+    const weekDay=title.match(/\b(?:(next|this)\s+)?(sunday|monday|tuesday|wednesday|thursday|friday|saturday)\b/i);
+    const relative=title.match(/\b(day after tomorrow|tomorrow|today|tonight)\b/i);
+    if(isoDate){
+      when=new Date(Number(isoDate[1]),Number(isoDate[2])-1,Number(isoDate[3]));
+      if(when.getFullYear()!==Number(isoDate[1])||when.getMonth()+1!==Number(isoDate[2])||when.getDate()!==Number(isoDate[3]))return {error:'That date is not valid. Please use a real calendar date.'};
+      hasDate=true;dayPhrase=isoDate[0];
+    }else if(monthDate){
+      const mm=months.indexOf(monthDate[1].toLowerCase()), dd=Number(monthDate[2]),yy=Number(monthDate[3]||referenceDay.getFullYear());
+      when=new Date(yy,mm,dd);
+      if(when.getMonth()!==mm||when.getDate()!==dd)return {error:'That date is not valid. Please use a real calendar date.'};
+      if(!monthDate[3]&&when<referenceDay)when.setFullYear(yy+1);
+      hasDate=true;dayPhrase=monthDate[0];
+    }else if(slashDate){
+      const mm=Number(slashDate[1])-1,dd=Number(slashDate[2]);
+      let yy=slashDate[3]?Number(slashDate[3]):referenceDay.getFullYear();
+      if(yy<100)yy+=2000;
+      when=new Date(yy,mm,dd);
+      if(when.getMonth()!==mm||when.getDate()!==dd)return {error:'That date is not valid. Please use a real calendar date.'};
+      if(!slashDate[3]&&when<referenceDay)when.setFullYear(yy+1);
+      hasDate=true;dayPhrase=slashDate[0];
+    }else if(daysOut){
+      let n=daysOut[1].toLowerCase();n=n==='two'?2:n==='three'?3:Number(n);
+      when=shift(n);hasDate=true;dayPhrase=daysOut[0];
+    }else if(weekDay){
+      const target=weekdays.indexOf(weekDay[2].toLowerCase());
+      let diff=(target-referenceDay.getDay()+7)%7;
+      if(weekDay[1]?.toLowerCase()==='next')diff=diff===0?7:diff+7;
+      else if(diff===0&&!weekDay[1])diff=7; // Bare weekday: next occurrence, never yesterday.
+      when=shift(diff);hasDate=true;dayPhrase=weekDay[0];
+    }else if(relative){
+      const term=relative[1].toLowerCase();when=shift(term==='today'||term==='tonight'?0:term==='tomorrow'?1:2);hasDate=true;dayPhrase=relative[0];
+      if(term==='tonight'&&!explicitTime)hour=19;
+    }
+    if(dayPhrase)title=title.replace(dayPhrase,' ').replace(/\s+(?:on|by|for)\s*$/i,' ');
+    const period=title.match(/\b(?:(?:in\s+the|this)\s+)?(morning|afternoon|evening)\b/i);
+    if(period){
+      const text=period[1].toLowerCase();if(!explicitTime)hour=text==='morning'?9:text==='afternoon'?14:18;
+      title=title.replace(period[0],' ');
+      if(!hasDate){when=shift(0);hasDate=true;}
+    }
+    if(explicitTime&&!hasDate){return {error:'Which day is that for? Add “today,” “tomorrow,” or a weekday along with the time.'};}
+    title=title.replace(/\s+/g,' ').replace(/^[\s,.:;\-]+|[\s,.:;\-]+$/g,'').trim();
+    if(title.length<2)return {error:'I need a short task description, such as “Email the dentist tomorrow at 10 AM”.'};
+    if(title.length>160)return {error:'That task is a little long. Shorten the title, then put extra details in its notes.'};
+    let reminder='',due='';
+    if(hasDate){
+      reminder=atDate(when,hour,minute);due=reminder.slice(0,10);
+      if(new Date(reminder).getTime()<new Date(reference).getTime()-60_000)return {error:'That reminder time has already passed. Please choose a future time.'};
+    }else if(preset!=='none'){
+      reminder=plannedReminder(preset);due=reminder.slice(0,10);
+    }
+    return {title,due,remindAt:reminder,reminderCadence:reminder?'daily':'none',explicit:hasDate,hasMessage:isMessageTask({title}),description:reminder?conciseWhen(reminder):'No reminder'};
+  }
+  // Two-stage reminders are proposed for approval, never silently scheduled.
+  function followupProposal(text){
+    const match=String(text).match(/(?:[,;.!]\s*|\s+)(?:and\s+)?(?:if\s+(?:i\s+haven[’']t\s+(?:done|finished)\s+it|it(?:\s+isn[’']t|[’']s\s+not)\s+(?:done|finished))(?:\s*,)?\s*)?remind\s+me\s+again\s+(?:on\s+)?(.+)$/i);
+    if(!match)return null;
+    const main=text.slice(0,match.index).trim().replace(/[,;.]+$/,'');
+    const first=parseTaskInput(main,'tomorrow');
+    if(first.error)return {error:first.error};
+    if(!first.remindAt)return {error:'Please give a first reminder date and time.'};
+    // Use the first reminder as the reference point so "Monday" after "Friday" means the following Monday.
+    const second=parseTaskInput('Check in '+match[1].trim(),'none',new Date(new Date(first.remindAt).getTime()+60_000));
+    if(second.error)return {error:'For the second reminder: '+second.error};
+    if(!second.explicit||!second.remindAt)return {error:'When should I remind you again? Try “Monday at 9 AM”.'};
+    if(new Date(second.remindAt).getTime()<=new Date(first.remindAt).getTime())return {error:'The second reminder needs to be after the first one.'};
+    return {task:{...first,reminderCadence:'once',followupAt:second.remindAt},text:`Here’s your reminder plan for “${first.title}”:\n1. First reminder: ${conciseWhen(first.remindAt)}.\n2. If the task is still open: ${conciseWhen(second.remindAt)}.\n\nNothing is scheduled yet. Review and select “Approve reminders” below in Ask Niarel.`};
+  }
+  function createFromWords(words,preset='tomorrow',source='assistant'){
+    const parsed=parseTaskInput(words,preset);
+    if(parsed.error)return {error:parsed.error};
+    const task=addTask({...parsed,source});
+    return {task,parsed};
+  }
+  function dayPlan(){
+    const active=openTasks();if(!active.length)return 'Your list is clear. Add a task and I’ll help you plan when to tackle it.';
+    const today=iso();
+    const urgent=active.filter(t=>t.due&&t.due<=today);
+    const later=active.filter(t=>!t.due||t.due>today);
+    const selected=[...sortedTasks(urgent),...sortedTasks(later)].slice(0,3);
+    const labels=['Start here','Then','After that'];
+    let parts=[`Let's make a manageable plan. You have ${active.length} open task${active.length===1?'':'s'}${urgent.length?` and ${urgent.length} due or overdue`:''}.`,`My suggested top ${selected.length}:`];
+    selected.forEach((t,i)=>parts.push(`${i+1}. ${labels[i]}: ${t.title}${t.due?` (${t.due<today?'past due':t.due===today?'due today':niceDate(t.due)})`:''}`));
+    parts.push('You can check each one off when it’s done. I prioritized dates and your selected priority levels; adjust them any time.');
+    return parts.join('\n');
+  }
+  function suggestSteps(raw){
+    const title=String(raw||'').trim().replace(/[.!]+$/,'');
+    if(title.length<3||title.length>110)return null;
+    const lower=title.toLowerCase();
+    let steps;
+    if(/(?:clean|tidy|organize|declutter)/.test(lower))steps=[`Gather what you need for ${title.toLowerCase()}`, 'Choose one small area to start with','Sort or clean that area','Put things away and do a final check'];
+    else if(/(?:trip|travel|vacation|packing)/.test(lower))steps=['Check the dates and essential details','Make a short packing and preparation list','Prepare travel essentials','Review everything the day before'];
+    else if(/(?:study|exam|homework|assignment)/.test(lower))steps=['List the key topics or requirements','Set aside a focused work session','Complete the first section','Review and check your work'];
+    else if(/(?:party|event|birthday|dinner)/.test(lower))steps=['Confirm the date and basic plan','Write down what needs to be arranged','Get any supplies or confirmations','Do a final check before the event'];
+    else if(/(?:appointment|doctor|dentist)/.test(lower))steps=['Confirm the appointment details','Write down questions or information to bring','Plan the travel or call time','Attend and note any follow-up'];
+    else if(/(?:grocer|shopping|errands)/.test(lower))steps=['Make a short list of what you need','Group items by location or category','Complete the shopping or errands','Put things away and check the list'];
+    else steps=[`Clarify the result you want from ${title.toLowerCase()}`, 'Choose the smallest useful first step','Make progress on that step','Review what remains and adjust'];
+    return {title,steps};
+  }
+  // v9: transparent, grounded actions on existing task records. No inference about outside apps.
+  function taskMatches(query, includeDone=false){
+    const q=normalizeTitle(String(query||'').replace(/^["“”'`]+|["“”'`]+$/g,'').replace(/\b(?:task|reminder)\b$/i,'').trim());
+    if(!q)return [];
+    const base=state.tasks.filter(t=>includeDone||!t.done);
+    const exact=base.filter(t=>normalizeTitle(t.title)===q);
+    if(exact.length)return exact;
+    return base.filter(t=>normalizeTitle(t.title).includes(q));
+  }
+  function findTaskOrExplain(fragment,includeDone=false){
+    const found=taskMatches(fragment,includeDone);
+    if(found.length===1)return {task:found[0]};
+    if(!found.length)return {message:`I couldn't find an ${includeDone?'existing':'open'} task matching “${fragment}”. Check My Tasks or give me a few exact words from its title.`};
+    return {message:`I found ${found.length} matching tasks:\n${found.slice(0,6).map(t=>'• '+t.title).join('\n')}\n\nWhich one do you mean? Please use its full title so I don't change the wrong task.`};
+  }
+  function selectNextTask(){
+    const all=openTasks();if(!all.length)return null;
+    const now=iso();
+    return [...all].sort((a,b)=>{
+      const bucket=t=>t.due&&t.due<now?0:t.due===now?1:2;
+      return bucket(a)-bucket(b)||priorityOrder(a.priority)-priorityOrder(b.priority)||(a.due||'9999').localeCompare(b.due||'9999');
+    })[0];
+  }
+  function nextStepText(){
+    const t=selectNextTask();
+    if(!t)return 'Your list is clear. Add one thing you want to do, and I can help you pick a starting point.';
+    const context=t.due?(t.due<iso()?'past due':t.due===iso()?'due today':`due ${niceDate(t.due)}`):'not dated';
+    return `I'd start with “${t.title}” (${context}; ${t.priority} priority). If it feels big, ask me to break it into a short checklist. When you're done, say “Mark ${t.title} done.”`;
+  }
+  function assistantAction(q){
+    const s=String(q||'').trim();
+    let m=s.match(/^(?:mark|check(?: off)?|complete|finish)\s+(.+?)\s+(?:as\s+)?(?:done|complete|finished)$/i)||s.match(/^(?:complete|finish|check off|mark done)\s+(.+)$/i)||s.match(/^i (?:finished|completed|did)\s+(.+)$/i);
+    if(m){
+      const result=findTaskOrExplain(m[1]);if(!result.task)return {text:result.message};
+      const t=result.task;t.done=true;t.completedAt=new Date().toISOString();dropAlerts(t.id);addLog('task-complete',t.title);
+      return {text:`Done! “${t.title}” is off your active list and safely in History. You can restore or reuse it anytime.`};
+    }
+    m=s.match(/^(?:move|reschedule|change|postpone)\s+(?:the\s+)?(?:reminder\s+for\s+|task\s+)?(.+?)\s+(?:to|for|until)\s+((?:(?:today|tomorrow|day after tomorrow|next\s+\w+|on\s+\w+|this\s+\w+|\w+day|\d{1,2}[\/\-]\d{1,2})(?:\b|\s)|in\s+\d+\s+days).*?)\s*[.!]?$/i);
+    if(m){
+      const result=findTaskOrExplain(m[1]);if(!result.task)return {text:result.message};
+      const when=parseTaskInput('Check in '+m[2],'none');
+      if(when.error||!when.remindAt)return {text:'I can change that reminder, but need a clear future date and time. Try “Move '+result.task.title+' to tomorrow at 9 AM.”'+(when.error?' '+when.error:'')};
+      const t=result.task;t.remindAt=when.remindAt;t.due=when.due;t.remindedOn='';t.snoozedUntil='';t.followupAt='';t.followupNotified='';t.reminderCadence='daily';dropAlerts(t.id);addLog('task-rescheduled',t.title);
+      return {text:`Updated “${t.title}” to ${conciseWhen(t.remindAt)}. I'll alert you while Stormskim is open. I removed its previous second reminder to avoid a conflicting schedule.`};
+    }
+    m=s.match(/^(?:find|search(?: for)?|look up)\s+(?:my\s+)?(?:task\s+)?(.+)$/i);
+    if(m){
+      const found=taskMatches(m[1],true);
+      return {text:found.length?`Found ${found.length} matching task${found.length===1?'':'s'}:\n${found.slice(0,12).map(t=>`• ${t.title} — ${t.done?'in History':t.due?`due ${niceDate(t.due)}`:'open'}`).join('\n')}`:`I couldn't find a saved task matching “${m[1]}”. Try a shorter phrase.`};
+    }
+    if(/\b(?:what(?: should| do) i (?:do|tackle|start)(?: first| next)?|one thing (?:to do|i should do)|what(?:'s| is) my next (?:step|task)|pick (?:my |a )?(?:task|priority)|next best (?:step|task))\b/i.test(s))return {text:nextStepText()};
+    if(/\b(?:what (?:did|have) i (?:finish|completed?|done)|completed tasks|what did i get done|wins this week|my progress|how many tasks have i (?:done|completed))\b/i.test(s)){
+      const done=state.tasks.filter(t=>t.done);const week=done.filter(t=>t.completedAt&&Date.now()-new Date(t.completedAt).getTime()<=7*86400000);
+      return {text:`You've completed ${done.length} task${done.length===1?'':'s'} overall, including ${week.length} in the last seven days.${week.length?'\n\nRecent wins:\n'+week.slice(-6).map(t=>'• '+t.title).join('\n'):''}\n\nAll completed tasks remain in History.`};
+    }
+    return null;
+  }
+  function onboardingHTML(){
+    if(!state.showWelcome&&(state.welcomeDismissed||state.tasks.length||state.routines.length))return '';
+    return `<section class="welcome-card" aria-label="Getting started"><div class="welcome-symbol" aria-hidden="true">✧</div><div class="welcome-copy"><p class="eyebrow">NIAREL'S QUICK START</p><h2>Welcome! Your day just got a little simpler.</h2><p>Start with one task. I'll help you remember it, find your next step, and keep completed work in History. Nothing gets sent or shared.</p><div class="welcome-actions"><button class="btn btn-primary btn-small" data-action="welcome-task">Add my first task</button><button class="btn btn-soft btn-small" data-action="welcome-help">See what I can ask</button><button class="btn btn-quiet btn-small" data-action="welcome-dismiss">Got it</button></div></div></section>`;
+  }
+  function quickForm(){return `<form id="quickTaskForm" class="quick-capture smart-capture"><div class="capture-label"><span>✧ Tell Niarel what you need to remember</span><small>Try “Call the dentist tomorrow at 10 AM”</small></div><div class="capture-main"><span aria-hidden="true">＋</span><input id="quickTaskTitle" name="title" required maxlength="200" placeholder="Add a task or reminder..." aria-label="Task or reminder to add" autocomplete="off"><button class="btn btn-primary" type="submit">Add task</button></div><div class="capture-options"><label>If no date is mentioned <select name="when" aria-label="Default reminder time"><option value="tomorrow">Tomorrow, 9 AM</option><option value="today">Today, 5 PM (or in 1 hour)</option><option value="twodays">In 2 days, 9 AM</option><option value="none">No reminder</option></select></label><button type="button" class="text-link" data-action="new-task">+ More details</button><span class="capture-hint">Specific dates and times in your text take priority.</span></div></form>`;}
+  function reminderLabel(t){if(t.reminderCadence==='none'||!t.remindAt)return 'No reminders';return `⏰ ${dateTime(t.remindAt)}${t.reminderCadence==='daily'?' · daily':''}${t.followupAt?` · 2nd reminder ${dateTime(t.followupAt)}`:''}`;}
+  function isMessageTask(t){return /(email|message|text|contact|reach out|follow.?up|check in|confirm|request|ask|update|notify|schedule|appointment|quote|remind|call|invoice|deliver|reply|send|customer|carrier|driver|shipper)/i.test(t.title)||!!t.recipient;}
+  function alertsForOpenTasks(){return state.alerts.filter(a=>state.tasks.some(t=>t.id===a.taskId&&!t.done));}
+  function dropAlerts(id){state.alerts=state.alerts.filter(a=>a.taskId!==id);}
+  function reminderInboxHTML(){
+    const items=alertsForOpenTasks();
+    if(!items.length)return '';
+    return `<section class="section-card reminder-inbox" id="reminderInbox" aria-label="Reminders needing attention"><div class="card-head"><div><p class="eyebrow">READY WHEN YOU ARE</p><h2>⏰ Needs your attention</h2><p class="planner-description">Take care of it now, reschedule, or let me remind you again.</p></div>${chip(String(items.length)+' due','active')}</div>${items.map(a=>{
+      const t=state.tasks.find(x=>x.id===a.taskId);if(!t)return '';
+      return `<article class="reminder-card"><div class="reminder-card-copy"><span class="reminder-type">${a.kind==='followup'?'Second reminder':a.kind==='snooze'?'Reminder is back':'Time to follow through'}</span><strong>${esc(t.title)}</strong><small>${esc(t.remindAt?dateTime(t.remindAt):'Task reminder')}</small></div><div class="reminder-actions"><button class="btn btn-primary btn-small" data-action="alert-complete" data-id="${esc(t.id)}">✓ Done</button><button class="btn btn-outline btn-small" data-action="alert-snooze" data-id="${esc(t.id)}" data-minutes="15">15 min</button><button class="btn btn-outline btn-small" data-action="alert-snooze" data-id="${esc(t.id)}" data-minutes="60">1 hour</button><button class="btn btn-outline btn-small" data-action="alert-snooze" data-id="${esc(t.id)}" data-minutes="tomorrow">Tomorrow</button><button class="btn btn-outline btn-small" data-action="alert-edit" data-id="${esc(t.id)}">Change time</button>${isMessageTask(t)?`<button class="btn btn-soft btn-small" data-action="alert-draft" data-id="${esc(t.id)}">✉ Draft</button>`:''}<button class="btn btn-quiet btn-small" data-action="alert-dismiss" data-id="${esc(t.id)}">Dismiss</button></div></article>`;}).join('')}</section>`;
+  }
+  function checkReminders(){
+    const now=Date.now(),today=iso();let changed=false,added=[];
+    for(const t of openTasks()){
+      function enqueue(kind){const existing=state.alerts.find(a=>a.taskId===t.id);if(!existing){state.alerts.unshift({id:uid(),taskId:t.id,kind,at:new Date().toISOString()});added.push(t);}else if(kind==='followup'){existing.kind='followup';existing.at=new Date().toISOString();added.push(t);}changed=true;}
+      if(t.snoozedUntil){
+        const wake=new Date(t.snoozedUntil).getTime();
+        if(Number.isFinite(wake)&&wake>now)continue;
+        t.snoozedUntil='';t.remindedOn=today;enqueue('snooze');
+      }
+      if(t.remindAt&&t.reminderCadence!=='none'){
+        const target=new Date(t.remindAt).getTime();
+        if(Number.isFinite(target)&&target<=now&&(t.reminderCadence==='once'?!t.remindedOn:t.remindedOn!==today)){
+          t.remindedOn=today;enqueue('initial');
+        }
+      }
+      if(t.followupAt&&!t.followupNotified){
+        const target=new Date(t.followupAt).getTime();
+        if(Number.isFinite(target)&&target<=now){t.followupNotified=new Date().toISOString();enqueue('followup');}
+      }
+    }
+    if(!changed)return;
+    state.alerts=state.alerts.slice(0,100);save();render();
+    if(added.length){showNotice(`⏰ ${added.length} task reminder${added.length===1?'':'s'} need attention. Use the bell or My Planner.`);
+      if('Notification' in window&&Notification.permission==='granted'){for(const t of added.slice(0,3)){try{new Notification('Stormskim reminder',{body:t.title,tag:`stormskim-${t.id}`});}catch{}}}}
+  }
+  function snoozeAlert(task,minutes){
+    const when=new Date();
+    if(minutes==='tomorrow'){when.setDate(when.getDate()+1);when.setHours(9,0,0,0);}else{when.setMinutes(when.getMinutes()+Number(minutes));}
+    task.snoozedUntil=atDate(when,when.getHours(),when.getMinutes());task.remindedOn=iso();dropAlerts(task.id);addLog('reminder-snooze',task.title);save();render();showNotice(`Will remind you again ${conciseWhen(task.snoozedUntil)} while the app is open.`);
+  }
+  function calendarICS(t){
+    const start=t.remindAt?new Date(t.remindAt):new Date(Date.now()+3600000);
+    if(Number.isNaN(start.getTime()))return;
+    const end=new Date(start.getTime()+30*60000);
+    const dt=x=>x.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z');
+    const escapeICS=x=>String(x||'').replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
+    const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Stormskim//Task Reminder//EN','BEGIN:VEVENT',`UID:${t.id}@stormskim.local`,`DTSTAMP:${dt(new Date())}`,`DTSTART:${dt(start)}`,`DTEND:${dt(end)}`,`SUMMARY:${escapeICS(t.title)}`,`DESCRIPTION:${escapeICS(t.notes||'Task reminder — Stormskim')}`,'BEGIN:VALARM','TRIGGER:-PT15M','ACTION:DISPLAY','DESCRIPTION:Task reminder','END:VALARM','END:VEVENT','END:VCALENDAR'];
+    if(t.followupAt&&!t.done){
+      const follow=new Date(t.followupAt);
+      if(Number.isFinite(follow.getTime())){
+        const endFollow=new Date(follow.getTime()+30*60000);
+        lines.splice(lines.length-1,0,
+          'BEGIN:VEVENT',`UID:${t.id}-followup@stormskim.local`,`DTSTAMP:${dt(new Date())}`,`DTSTART:${dt(follow)}`,`DTEND:${dt(endFollow)}`,
+          `SUMMARY:${escapeICS('Follow up if unfinished: '+t.title)}`,
+          'DESCRIPTION:Second reminder if this task is still open. This external calendar event will not be cancelled automatically when you complete the task in Stormskim.',
+          'BEGIN:VALARM','TRIGGER:-PT15M','ACTION:DISPLAY','DESCRIPTION:Follow-up reminder','END:VALARM','END:VEVENT');
+      }
+    }
+    downloadBlob(`${t.title.replace(/[^a-z0-9 -]/gi,'').slice(0,32)||'reminder'}.ics`,new Blob([lines.join('\r\n')],{type:'text/calendar;charset=utf-8'}));
+    showNotice('Calendar file downloaded. Import it into your calendar for closed-app alerts. If you finish early, remove any later follow-up event from your calendar.');
+  }
+  function downloadBlob(name,blob){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);}
+
+  function openTasks(){return state.tasks.filter(t=>!t.done);}
+  function priorityOrder(p){return {high:0,medium:1,low:2}[p]??3;}
+  function sortedTasks(items){return [...items].sort((a,b)=>Number(a.done)-Number(b.done)||priorityOrder(a.priority)-priorityOrder(b.priority)||(a.due||'9999').localeCompare(b.due||'9999'));}
+  function dueRoutines(){
+    const day=new Date().getDay(),today=iso();let changed=false;
+    for(const r of state.routines){
+      if(!r.enabled||r.lastAutoDate===today||r.cadence==='manual')continue;
+      if(r.cadence==='weekdays'&&(day===0||day===6))continue;
+      if(r.cadence==='weekly'&&day!==1)continue;
+      for(const step of r.steps){state.tasks.push(cleanTask({id:uid(),title:`${r.name}: ${step}`,notes:'Created automatically by a routine when Stormskim opened.',due:today,remindAt:`${today}T09:00`,priority:'medium',workspace:r.workspace,done:false,source:`routine:${r.id}`,createdAt:new Date().toISOString()}));}
+      r.lastAutoDate=today;addLog('routine-run',r.name);changed=true;
+    }
+    if(changed)save();
+  }
+  function normalizeTitle(title){return String(title||'').trim().toLowerCase().replace(/\s+/g,' ');}
+  function suggestions(){
+    const groups=new Map();
+    for(const l of state.logs){if(l.type!=='task-complete')continue;const key=normalizeTitle(l.title);if(!key)continue;const g=groups.get(key)||{key,title:l.title,count:0,days:new Set(),demoOnly:true};g.count++;g.days.add(short(l.at,10));g.demoOnly=g.demoOnly&&!!l.demo;groups.set(key,g);}
+    return [...groups.values()].filter(g=>g.count>=3&&g.days.size>=2&&!state.dismissed.includes(g.key)&&!state.routines.some(r=>normalizeTitle(r.name)===g.key)).sort((a,b)=>b.count-a.count);
+  }
+  function taskHTML(t,actions=true){
+    const due=t.due?(overdue(t.due)&&!t.done?'Overdue · ':isDueToday(t.due)?'Today · ':'')+niceDate(t.due):'No due date';
+    return `<div class="task-row ${t.done?'done':''}" data-task-row="${esc(t.id)}"><input class="task-check" type="checkbox" aria-label="Complete ${esc(t.title)}" data-action="toggle-task" data-id="${esc(t.id)}" ${t.done?'checked':''}><div class="task-info"><div class="task-title">${esc(t.title)}</div><div class="task-sub"><span>${esc(due)}</span><span>· ${esc(reminderLabel(t))}</span></div></div><span class="chip ${esc(t.priority)}">${esc(t.priority)}</span>${actions?`<div class="task-actions">${isMessageTask(t)?`<button class="btn btn-soft btn-small" data-action="draft-task" data-id="${esc(t.id)}" title="Prepare an editable follow-up">✉ Draft</button>`:''}<button class="icon-btn" data-action="calendar-task" data-id="${esc(t.id)}" title="Export reminder to calendar" aria-label="Add to calendar">▦</button><button class="icon-btn" data-action="edit-task" data-id="${esc(t.id)}" title="Edit task" aria-label="Edit task">✎</button><button class="icon-btn" data-action="delete-task" data-id="${esc(t.id)}" title="Delete task" aria-label="Delete task">×</button></div>`:''}</div>`;
+  }
+  function historyHTML(){let items=state.tasks.filter(t=>t.done).sort((a,b)=>(b.completedAt||'').localeCompare(a.completedAt||''));if(state.search)items=items.filter(t=>`${t.title} ${t.notes}`.toLowerCase().includes(state.search.toLowerCase()));return `<div class="page-intro"><div><p class="eyebrow">YOUR COMPLETED WORK</p><h1>History</h1><p class="lead">Completed tasks disappear from your active list but are never lost. Restore one or add a fresh copy any time.</p></div>${chip(`${state.tasks.filter(t=>t.done).length} completed`,'active')}</div><div class="toolbar"><input class="search-input" id="historySearch" placeholder="Search completed tasks..." value="${esc(state.search)}" aria-label="Search history"></div><section class="section-card">${items.length?items.map(t=>`<div class="history-row"><div class="history-mark">✓</div><div class="history-info"><strong>${esc(t.title)}</strong><small>Completed ${esc(readableWhen(t.completedAt||t.createdAt))}${t.notes?` · ${esc(short(t.notes,90))}`:''}</small></div><div class="history-actions"><button class="btn btn-outline btn-small" data-action="restore-task" data-id="${esc(t.id)}">Restore</button><button class="btn btn-primary btn-small" data-action="reuse-task" data-id="${esc(t.id)}">+ Use again</button></div></div>`).join(''):`<div class="empty"><strong>No completed tasks found.</strong>Check off a task and you'll find it here.</div>`}</section>`;}
+  function chip(text,kind='neutral'){return `<span class="chip ${kind}">${esc(text)}</span>`;}
+
+  function dashboardHTML(){
+    const now=iso(), ot=openTasks(), due=sortedTasks(ot.filter(t=>!t.due||t.due<=now)).slice(0,6);
+    const nextReminders=ot.filter(t=>t.remindAt&&t.reminderCadence!=='none').sort((a,b)=>a.remindAt.localeCompare(b.remindAt)).slice(0,3);
+    return `${onboardingHTML()}<div class="page-intro intro-storm"><div><div class="eyebrow">YOUR PERSONAL ORGANIZER</div><h1>Let's make today easier.</h1><p class="lead">One thing at a time. Add it, remember it, check it off. Niarel is here when you need a hand.</p></div><div class="page-actions"><button class="btn btn-soft" data-action="plan-my-day">✧ Plan my day</button></div></div>${quickForm()}${reminderInboxHTML()}
+      <div class="niarel-plan-strip"><span class="plan-sparkle">✧</span><div><strong>${ot.length?'Niarel suggests a starting point':'Need a starting point?'}</strong><p>${ot.length?esc(nextStepText()):'Add a task and Niarel can help you choose what to tackle first.'}</p></div><button class="btn btn-soft btn-small" data-action="next-step">What's next? →</button></div>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-top">To do <span class="stat-icon">☑</span></div><div class="stat-num">${ot.length}</div><div class="stat-desc">On your list</div></div>
+        <div class="stat"><div class="stat-top">Due today <span class="stat-icon">☀</span></div><div class="stat-num">${ot.filter(t=>t.due===now).length}</div><div class="stat-desc">Your focus</div></div>
+        <div class="stat"><div class="stat-top">Need attention <span class="stat-icon">!</span></div><div class="stat-num">${ot.filter(t=>overdue(t.due)).length}</div><div class="stat-desc">Past due</div></div>
+        <div class="stat"><div class="stat-top">Completed <span class="stat-icon">✓</span></div><div class="stat-num">${state.tasks.filter(t=>t.done).length}</div><div class="stat-desc">Saved in History</div></div>
+      </div>
+      <div class="two-col"><div class="stack">
+        <section class="section-card"><div class="card-head"><h2>Today's focus</h2><button class="text-link" data-view="tasks">All tasks →</button></div>${due.length?due.map(t=>taskHTML(t,true)).join(''):`<div class="empty"><strong>A clear start.</strong>Nothing urgent right now. Add something when you're ready.</div>`}</section>
+        <section class="section-card"><div class="card-head"><h2>Coming up</h2><button class="text-link" data-view="planner">Open planner →</button></div>${nextReminders.length?nextReminders.map(t=>`<div class="planner-mini"><div><strong>${esc(t.title)}</strong><small>${esc(reminderLabel(t))}</small></div><button class="btn btn-outline btn-small" data-action="edit-task" data-id="${esc(t.id)}">Change</button></div>`).join(''):`<div class="empty">No upcoming reminders. Set one on any task.</div>`}</section>
+      </div><div class="stack">
+        <section class="section-card"><div class="card-head"><h2>Your shortcuts</h2></div><div class="quick-actions"><button class="quick-action" data-action="new-task"><b>＋</b>Add a task</button><button class="quick-action" data-view="planner"><b>◷</b>See reminders</button><button class="quick-action" data-action="new-routine"><b>↻</b>New routine</button><button class="quick-action" data-view="history"><b>✓</b>History</button></div><div class="callout"><strong>✧ Niarel can help</strong><p>Try “remind me to call Mom tomorrow at 9 AM,” “plan my day,” or “break down organize my garage.”</p><button class="text-link" data-view="assistant" style="padding-left:0;margin-top:10px">Ask Niarel →</button></div></section>
+        <section class="section-card"><div class="card-head"><h2>My routines</h2><button class="text-link" data-view="routines">See routines →</button></div>${state.routines.filter(r=>r.enabled).slice(0,4).map(r=>`<div class="planner-mini"><div><strong>${esc(r.name)}</strong><small>${esc(cadenceLabel(r.cadence))} · ${r.steps.length} steps</small></div>${chip('On','active')}</div>`).join('')||'<div class="empty">You can make repeat tasks easier with a routine.</div>'}</section>
+      </div></div>`;
+  }
+  function tasksHTML(){
+    let items=sortedTasks(openTasks());
+    if(state.taskFilter==='overdue')items=items.filter(t=>overdue(t.due));
+    if(state.search)items=items.filter(t=>`${t.title} ${t.notes}`.toLowerCase().includes(state.search.toLowerCase()));
+    return `<div class="page-intro"><div><p class="eyebrow">ONE THING AT A TIME</p><h1>My Tasks</h1><p class="lead">Keep everything you want to do in one easy list. Tap the checkbox when you're done; we'll move it to History.</p></div><button class="btn btn-outline" data-view="history">View History →</button></div>${quickForm()}<div class="toolbar"><div class="filters">${[['open','All to-dos'],['overdue','Past due']].map(([f,label])=>`<button class="filter ${state.taskFilter===f?'selected':''}" data-action="task-filter" data-value="${f}">${label}</button>`).join('')}</div><input class="search-input" id="taskSearch" placeholder="Find a task..." value="${esc(state.search)}" aria-label="Search tasks"></div><div class="section-card">${items.length?items.map(t=>taskHTML(t)).join(''):`<div class="empty"><strong>All clear!</strong>Nothing on this list. Add your next task above, or reuse a task from History.</div>`}</div>`;
+  }
+  function plannerItemHTML(t){
+    const when=t.remindAt&&t.reminderCadence!=='none'?reminderLabel(t):t.due?`Due ${niceDate(t.due)} · reminder off`:'No reminder set';
+    return `<div class="planner-item"><input class="task-check" type="checkbox" data-action="toggle-task" data-id="${esc(t.id)}" aria-label="Complete ${esc(t.title)}"><div class="planner-item-text"><strong>${esc(t.title)}</strong><small>${esc(when)}</small></div><div class="planner-item-actions">${isMessageTask(t)?`<button class="btn btn-soft btn-small" data-action="draft-task" data-id="${esc(t.id)}">✉ Message</button>`:''}<button class="btn btn-outline btn-small" data-action="edit-task" data-id="${esc(t.id)}">Set time</button>${t.remindAt&&t.reminderCadence!=='none'?`<button class="btn btn-outline btn-small" data-action="snooze-task" data-id="${esc(t.id)}">Tomorrow</button>`:''}<button class="icon-btn" data-action="calendar-task" data-id="${esc(t.id)}" title="Download calendar reminder" aria-label="Download calendar reminder">▦</button></div></div>`;
+  }
+  function plannerHTML(){
+    const items=openTasks(), today=iso(), next=offsetDay(1), week=offsetDay(7);
+    const byDay=(t)=>t.remindAt&&t.reminderCadence!=='none'?t.remindAt.slice(0,10):t.due;
+    const sorted=items.slice().sort((a,b)=>(byDay(a)||'9999').localeCompare(byDay(b)||'9999'));
+    const grouped=[
+      ['Needs attention','Tasks and reminders from before today.',sorted.filter(t=>byDay(t)&&byDay(t)<today)],
+      ['Today','A gentle look at what needs your attention now.',sorted.filter(t=>byDay(t)===today)],
+      ['Tomorrow','See what is already planned for tomorrow.',sorted.filter(t=>byDay(t)===next)],
+      ['Next 7 days','A little further ahead.',sorted.filter(t=>byDay(t)>next&&byDay(t)<=week)],
+      ['Later & unscheduled','Make time for these whenever you are ready.',sorted.filter(t=>!byDay(t)||byDay(t)>week)]
+    ];
+    return `<div class="page-intro"><div><p class="eyebrow">REMINDERS & FOLLOW-THROUGH</p><h1>My Planner</h1><p class="lead">Your to-dos, reminders and follow-ups in one calm place. Change a reminder or make a message in a tap.</p></div><button class="btn btn-primary" data-action="new-task">+ Add a reminder</button></div>
+      <div class="planner-guide"><div class="planner-guide-icon">◷</div><div><strong>You choose what matters and when.</strong><p>Niarel checks for reminders while Stormskim is open. For alerts with the app closed, use the calendar button to download a calendar reminder.</p></div><button class="btn btn-soft btn-small" data-action="notifications">Allow alerts</button></div>
+      ${reminderInboxHTML()}<div class="planner-groups">${grouped.map(([name,desc,tasks])=>`<section class="section-card planner-section"><div class="card-head"><div><h2>${name}</h2><p class="planner-description">${desc}</p></div>${chip(`${tasks.length}`,'neutral')}</div>${tasks.length?tasks.map(plannerItemHTML).join(''):`<div class="planner-empty">Nothing here yet.</div>`}</section>`).join('')}</div>`;
+  }
+
+  function cadenceLabel(c){return {daily:'Every day',weekdays:'Weekdays',weekly:'Mondays',manual:'Manual only'}[c]||'Manual';}
+  function routinesHTML(){const suggestionList=suggestions();return `<div class="page-intro"><div><p class="eyebrow">BUILD CONSISTENT HABITS</p><h1>My routines</h1><p class="lead">Make everyday habits and repeating to-dos easy. Niarel can suggest routines for you to approve.</p></div><button class="btn btn-primary" data-action="new-routine">+ New routine</button></div>
+    <div class="routine-grid">${state.routines.map(r=>`<article class="routine-card"><div class="card-head" style="margin-bottom:8px"><span class="chip ${r.enabled?'active':'neutral'}">${r.enabled?'Enabled':'Paused'}</span></div><h3>${esc(r.name)}</h3><p>${esc(cadenceLabel(r.cadence))} · ${r.steps.length} steps · Tasks created when the app opens on scheduled days</p><ul class="routine-steps">${r.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ul><div class="routine-footer"><button class="btn btn-soft btn-small" data-action="run-routine" data-id="${esc(r.id)}">Run now</button><button class="btn btn-outline btn-small" data-action="edit-routine" data-id="${esc(r.id)}">Edit</button><button class="btn btn-outline btn-small" data-action="toggle-routine" data-id="${esc(r.id)}">${r.enabled?'Pause':'Enable'}</button><button class="btn btn-danger btn-small" data-action="delete-routine" data-id="${esc(r.id)}">Delete</button></div></article>`).join('')||'<div class="empty"><strong>No routines yet.</strong>Build your first reusable workflow.</div>'}</div>
+    <h2 class="h3-spaced">Suggested from your activity</h2>${suggestionList.length?suggestionList.map(s=>`<div class="suggestion"><h3>↻ ${esc(s.title)}</h3><p>${s.demoOnly?'<strong>Demonstration activity:</strong> ':''}This task was marked complete ${s.count} times across ${s.days.size} different days${s.demoOnly?' in the sample history':''}. This is a pattern suggestion, not machine-learning prediction. Would you like to turn it into a daily routine?</p><div class="suggestion-actions"><button class="btn btn-primary btn-small" data-action="approve-suggestion" data-key="${esc(s.key)}">Approve routine</button><button class="btn btn-outline btn-small" data-action="dismiss-suggestion" data-key="${esc(s.key)}">Dismiss</button></div></div>`).join(''):`<div class="empty"><strong>Nothing to suggest yet.</strong>Complete the same task on at least 2 days and 3 occasions. Stormskim will propose a routine for your approval.</div>`}
+    <p class="hint" style="margin-top:17px">Schedules only run when this app is opened on an eligible day. There are no background jobs or notifications while the tab is closed.</p>`;}
+  function chatHTML(){return `<div class="page-intro"><div><p class="eyebrow">YOUR FRIENDLY LOCAL HELPER</p><h1>Ask Niarel</h1><p class="lead">Tell Niarel what you want to remember or get help with. Fast, simple, and private—these are local rules, not a cloud AI subscription.</p></div></div><div class="assistant-shell"><section class="chat-panel"><div class="chat-heading"><h2>✧ Niarel · Your organizing companion</h2><span class="chip active">Local helper</span></div><div class="chat-messages" id="chatMessages" aria-live="polite">${state.chat.map(c=>`<div class="bubble ${c.who}">${esc(c.text)}</div>`).join('')}${state.pendingTask?`<div class="suggestion draft-area approval-card"><strong>Review two reminders · Not saved yet</strong><p><b>${esc(state.pendingTask.title)}</b><br>First: ${esc(conciseWhen(state.pendingTask.remindAt))}<br>If still open: ${esc(conciseWhen(state.pendingTask.followupAt))}</p><div class="suggestion-actions"><button class="btn btn-primary btn-small" data-action="confirm-task-plan">Approve reminders</button><button class="btn btn-outline btn-small" data-action="cancel-task-plan">Cancel</button></div></div>`:''}${state.planSuggestion?`<div class="suggestion draft-area"><strong>Suggested checklist · not added yet</strong><p>${esc(state.planSuggestion.title)}</p><ol class="suggested-steps">${state.planSuggestion.steps.map(st=>`<li>${esc(st)}</li>`).join('')}</ol><div class="suggestion-actions"><button class="btn btn-primary btn-small" data-action="accept-plan">Add these tasks</button><button class="btn btn-outline btn-small" data-action="dismiss-plan">Dismiss</button></div></div>`:''}${state.draft?`<div class="draft-area"><strong style="font-size:12px">Draft only — review before sending</strong><textarea id="draftText" aria-label="Editable message draft">${esc(state.draft)}</textarea><button class="btn btn-soft btn-small" data-action="copy-draft">Copy draft</button><p class="hint" style="margin:9px 0 0">Nothing is sent automatically.</p></div>`:''}</div><form class="chat-inputbar" id="chatForm"><input name="message" id="assistantMessage" aria-label="Message assistant" placeholder="Try: Call Mom tomorrow at 10 AM" maxlength="500" required autocomplete="off"><button class="btn btn-primary" type="submit">Send</button></form></section><aside class="section-card"><div class="card-head"><h2>Try asking</h2></div>${['What should I tackle next?','What did I finish this week?','Plan my day','Show my reminders','Show overdue tasks','Remind me to water plants tomorrow at 8 AM','Break down organize my garage','Remind me to call the dentist Friday at 10 AM, and if I haven’t done it remind me again Monday at 9 AM'].map(c=>`<button class="chat-command" data-action="ask-command" data-command="${esc(c)}">${esc(c)}</button>`).join('')}${openTasks().length?`<button class="chat-command" data-action="ask-command" data-command="${esc('Complete '+openTasks()[0].title)}">✓ Mark “${esc(short(openTasks()[0].title,45))}” done</button>`:''}<div class="callout"><strong>What can Niarel remember?</strong><p>Your saved tasks, reminders and routines in this browser. Niarel can suggest a routine after you repeatedly complete the same task. She doesn't read your inbox.</p></div></aside></div>`;}
+  function settingsHTML(){return `<div class="page-intro"><div><p class="eyebrow">PRIVACY & CONTROL</p><h1>Settings & data</h1><p class="lead">You control what this browser remembers—and what gets exported or deleted.</p></div></div><div class="settings-grid"><section class="setting-card"><h3>💾 Your data</h3><p>Your tasks, reminders, routines, and Niarel chats stay in this browser's local storage. Export a backup regularly, especially before clearing browser data or changing devices.</p><button class="btn btn-soft" data-action="export">Export JSON backup</button><button class="btn btn-outline" data-action="import">Import backup</button><button class="btn btn-outline" data-action="load-demo">Try sample tasks</button><p class="hint">Storage status: <strong>${storageAvailable?'Available':'Unavailable'}</strong> · ${state.tasks.length} tasks · ${state.routines.length} routines</p></section>
+    <section class="setting-card"><h3>✧ Niarel's style</h3><p>Choose how much detail you want in Niarel's replies. Preferences stay on this device.</p><label class="setting-choice">Response style <select id="assistantTone" aria-label="Niarel response style"><option value="friendly" ${state.assistantTone!=='concise'?'selected':''}>Friendly & encouraging</option><option value="concise" ${state.assistantTone==='concise'?'selected':''}>Short & focused</option></select></label><button class="btn btn-outline btn-small" data-action="show-welcome">Show getting-started guide again</button></section>
+    <section class="setting-card"><h3>⏰ Reminders</h3><p>While Stormskim is open, due tasks trigger an in-app reminder once per day until completed. With permission, your browser may also show a system notification. Snoozed reminders alert when you return if the app was closed. For alerts when the app is closed, export a task to your calendar.</p><button class="btn btn-soft" data-action="notifications">Enable browser notifications</button><p class="hint">Browser status: ${typeof Notification==='undefined'?'Not supported':Notification.permission} · No background push service is installed.</p></section><section class="setting-card"><h3>📲 Install Stormskim</h3><p>On a secure hosted website (such as GitHub Pages), you can add Stormskim to your phone or desktop like an app. It can open offline after its first successful load. No account is needed.</p><button class="btn btn-soft" data-action="install-app">Install / Add to Home Screen</button><p class="hint">Offline installation does not enable background reminders. Use Calendar export for alerts with Stormskim closed.</p></section><section class="setting-card"><h3>🔌 Integrations</h3><p>External integrations have not been connected to this standalone app. Your ChatGPT plugins are separate and do not grant this website access.</p><div class="status-row">Gmail ${chip('Not connected','neutral')}</div><div class="status-row">Google Calendar ${chip('Not connected','neutral')}</div><div class="status-row">Google Drive ${chip('Not connected','neutral')}</div><p class="hint">Live integration requires a separate authorized backend and security review. This free version operates without it.</p></section>
+    <section class="setting-card"><h3>🧠 Learning transparency</h3><p>Routine proposals come from repeated task completions (3 times across at least 2 days). No predictive AI model is running. No approval means no new routine.</p><div class="status-row">Enabled routines <strong>${state.routines.filter(r=>r.enabled).length}</strong></div><div class="status-row">Dismissed suggestions <strong>${state.dismissed.length}</strong></div><button class="btn btn-outline" data-action="reset-suggestions">Clear dismissed suggestions</button></section>
+    <section class="setting-card danger-zone"><h3>⚠ Privacy & reset</h3><p>Local browser storage is not encrypted. Use fictional/demo records until your organization's handling requirements are addressed. Avoid entering sensitive personal, financial, or private contact details on shared devices.</p>${state.demo?'<button class="btn btn-outline" data-action="clear-demo">Remove sample data</button>':''}<button class="btn btn-danger" data-action="reset-all">Delete all local data</button><p class="hint">Deletion is irreversible unless you exported a backup.</p></section></div>
+    <section class="section-card" style="margin-top:20px"><div class="card-head"><h2>Recent activity</h2><button class="text-link" data-action="export">Export backup →</button></div><ul class="activity">${state.logs.slice(0,12).map(l=>`<li>${esc(({ 'task-complete':'Completed task', 'routine-run':'Ran routine', 'task-add':'Created task', 'task-delete':'Deleted task', 'load-add':'Added load', 'load-update':'Updated load', 'routine-add':'Created routine', 'routine-approve':'Approved suggested routine' })[l.type]||l.type)}: ${esc(l.title)}${l.demo?' (sample)':''}<time>${esc(readableWhen(l.at))}</time></li>`).join('')||'<li>No activity yet.</li>'}</ul></section>`;}
+  function render(){
+    const root=$('#view');root.innerHTML=({dashboard:dashboardHTML,tasks:tasksHTML,history:historyHTML,planner:plannerHTML,routines:routinesHTML,assistant:chatHTML,settings:settingsHTML})[state.view]();
+    $('#breadcrumb').innerHTML=`My Organizer <span>/</span> ${esc(titles[state.view])}`;
+    $('#taskBadge').textContent=String(openTasks().length);
+    $('#plannerBadge').textContent=String(openTasks().filter(t=>t.remindAt&&t.reminderCadence!=='none').length);
+    $('#historyBadge').textContent=String(state.tasks.filter(t=>t.done).length);const n=$('#alertCount');if(n){n.textContent=String(alertsForOpenTasks().length);n.hidden=!alertsForOpenTasks().length;}
+    $('#todayText').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
+    $('#demoBanner').hidden=!state.demo;
+    document.querySelectorAll('[data-view]').forEach(el=>{el.classList.toggle('active',el.classList.contains('nav-item')&&el.dataset.view===state.view);if(el.classList.contains('nav-item')){if(el.dataset.view===state.view)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');}});
+    if(state.view==='assistant'){const p=$('#chatMessages');if(p)p.scrollTop=p.scrollHeight;}
+  }
+  function navigate(view){if(!VALID_VIEWS.includes(view))return;state.view=view;state.search='';save();render();window.scrollTo({top:0,behavior:'instant'});}
+  const modal = (id)=>document.getElementById(id);
+  function openTask(id){const t=state.tasks.find(x=>x.id===id);const f=$('#taskForm');f.reset();$('#taskDialogTitle').textContent=t?'Edit task':'New task';f.elements.id.value=t?.id||'';f.elements.title.value=t?.title||'';f.elements.notes.value=t?.notes||'';f.elements.due.value=t?t.due:'';f.elements.remindAt.value=t?t.remindAt:upcomingReminder();f.elements.reminderCadence.value=t?.reminderCadence||'daily';f.elements.followupAt.value=t?.followupAt||'';f.elements.recipient.value=t?.recipient||'';f.elements.priority.value=t?.priority||'medium';modal('taskDialog').showModal();}
+
+  function openRoutine(id){const r=state.routines.find(x=>x.id===id),f=$('#routineForm');f.reset();$('#routineDialogTitle').textContent=r?'Edit routine':'New routine';f.elements.id.value=r?.id||'';f.elements.name.value=r?.name||'';f.elements.cadence.value=r?.cadence||'daily';f.elements.steps.value=r?.steps?.join('\n')||'';f.elements.enabled.checked=r?.enabled??true;modal('routineDialog').showModal();}
+  function doRoutine(r,markToday=false){for(const step of r.steps)state.tasks.push(cleanTask({id:uid(),title:`${r.name}: ${step}`,notes:'Generated from an approved routine.',due:iso(),remindAt:plannedReminder('tomorrow'),priority:'medium',workspace:r.workspace,done:false,source:`routine:${r.id}`,createdAt:new Date().toISOString()}));if(markToday)r.lastAutoDate=iso();addLog('routine-run',r.name);save();showNotice(`Added ${r.steps.length} checklist tasks from “${r.name}”.`);render();}
+  function briefing(){
+    const ot=openTasks(), past=ot.filter(t=>overdue(t.due)), today=ot.filter(t=>isDueToday(t.due));
+    const upcoming=ot.filter(t=>t.remindAt&&t.reminderCadence!=='none').sort((a,b)=>a.remindAt.localeCompare(b.remindAt)).slice(0,4);
+    const lines=[`Your day — ${new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'})}`,`${ot.length} tasks on your list · ${today.length} due today · ${past.length} past due`];
+    if(today.length)lines.push('Today: '+sortedTasks(today).slice(0,5).map(t=>t.title).join('; '));
+    if(past.length)lines.push('Need attention: '+sortedTasks(past).slice(0,5).map(t=>t.title).join('; '));
+    if(upcoming.length)lines.push('Reminders: '+upcoming.map(t=>`${t.title} (${dateTime(t.remindAt)})`).join('; '));
+    if(!ot.length)lines.push('Nothing on your list yet. Add a task whenever you need to.');
+    lines.push('I’m using your saved tasks in this browser only. No email or calendar accounts have been checked.');
+    return lines.join('\n\n');
+  }
+  function answerFor(q){
+    const s=q.trim(),lower=s.toLowerCase();
+    if(/^(?:help|what can you do|commands)\b/.test(lower))return {text:'I can add tasks with times, recommend your next step, find a saved task, mark one done, move a reminder, plan your day, and create editable message drafts. Try “Move call dentist to tomorrow at 9 AM” or “Complete call dentist”. I only use tasks saved in this browser; I can’t send email or remind you while the app is closed.'};
+    const action=assistantAction(s);if(action)return action;
+    if(/\b(?:plan my day|organize my day|what should i do first|help me prioritize|make a plan|my priorities)\b/.test(lower))return {text:dayPlan()};
+    const breaking=s.match(/^(?:break down|breakdown|make a checklist for|help me plan|steps for)\s+(.+)$/i);
+    if(breaking){
+      const suggestion=suggestSteps(breaking[1]);
+      if(!suggestion)return {text:'Tell me a little more about what you want to break down.'};
+      state.planSuggestion=suggestion;
+      return {text:`Here’s a possible four-step checklist for “${suggestion.title}”:\n${suggestion.steps.map((st,i)=>`${i+1}. ${st}`).join('\n')}\n\nThese are suggestions, not new tasks yet. Open Ask Niarel and select “Add these tasks” if they look right.`};
+    }
+    const followup=followupProposal(s);
+    if(followup){if(followup.error)return {text:followup.error};state.pendingTask=followup.task;return {text:followup.text};}
+    const natural=/^(?:(?:(?:could you|can you|please)\s+)?remind me to|(?:add|create|make)(?:\s+(?:a|new))?\s+task\b|i (?:need|have|want) to|don't forget to|remember to)\b/i.test(s);
+    if(natural){
+      const result=createFromWords(s,'tomorrow','assistant');
+      if(result.error)return {text:result.error};
+      const {task:t}=result;
+      state.planSuggestion=null;
+      return {text:`Added “${t.title}” to My Tasks. ${t.remindAt?`I'll remind you ${conciseWhen(t.remindAt)} while Stormskim is open.`:'No reminder was set.'}${isMessageTask(t)?' You can also tap Draft beside the task to prepare a message or email.':''}\n\nCheck it off when you're finished; it'll move to History.`};
+    }
+    if(/(?:daily briefing|briefing|my day|today summary|what.s next)/.test(lower))return {text:briefing()};
+    if(/(overdue|past due|late tasks)/.test(lower)){
+      const ts=sortedTasks(openTasks().filter(t=>overdue(t.due)));
+      return {text:ts.length?`Past-due tasks (${ts.length}):\n${ts.slice(0,15).map(t=>`• ${t.title} — ${niceDate(t.due)}`).join('\n')}`:'Nothing past due. Nice work!'};
+    }
+    if(/(reminders|upcoming|planner|schedule)/.test(lower)&&!/(draft|email|message)/.test(lower)){
+      const ts=openTasks().filter(t=>t.remindAt&&t.reminderCadence!=='none').sort((a,b)=>a.remindAt.localeCompare(b.remindAt));
+      return {text:ts.length?`Your reminders (${ts.length}):\n${ts.slice(0,12).map(t=>`• ${t.title} — ${dateTime(t.remindAt)}`).join('\n')}\n\nYou can change reminder times in My Planner.`:'No reminders set yet. Add a task or edit one to choose a time.'};
+    }
+    if(/(draft|write|email|message|text|follow.?up)/.test(lower)){
+      const title=s.replace(/^.*?(?:for|about)\s+/i,'').trim();
+      const ts=openTasks().filter(t=>title&&t.title.toLowerCase().includes(title.toLowerCase()));
+      const t=ts[0]||openTasks().find(t=>lower.includes(t.title.toLowerCase()));
+      if(!t)return {text:'I can draft a message for a task you saved. Try “Draft a message for email the dentist,” or select Draft on a saved task.'};
+      const d=makeTaskDraft(t,'email');
+      return {text:`Here’s a suggested message for “${t.title}”. Review and edit it before sharing. I haven't sent anything.`,draft:`Subject: ${d.subject}\n\n${d.body}`};
+    }
+    if(lower.includes('routine')||lower.includes('habit')||lower.includes('learn'))return {text:`You have ${state.routines.length} saved routines and ${suggestions().length} suggested patterns. Open My Routines to create or approve a repeating checklist. Scheduled routines run when you open the app.`};
+    return {text:'I can help you organize your day. Try “Remind me to call Mom tomorrow at 10 AM,” “Plan my day,” “Show overdue tasks,” or “Break down organize my closet.”'};
+  }
+  function askAssistant(command){const text=short(command,500).trim();if(!text)return;state.chat.push({id:uid(),who:'user',text});const reply=answerFor(text);if(state.assistantTone==='concise'&&reply.text.length>220&&!reply.draft)reply.text=reply.text.split('\n\n')[0].slice(0,320);state.chat.push({id:uid(),who:'assistant',text:reply.text});state.chat=state.chat.slice(-75);state.draft=reply.draft||'';save();navigate('assistant');}
+  function exportData(){const value={...state,exportedAt:new Date().toISOString()};const blob=new Blob([JSON.stringify(value,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`stormskim-backup-${iso()}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);showNotice('Backup downloaded. Keep it somewhere safe.');}
+  async function copyDraft(){const value=$('#draftText')?.value;if(!value)return;try{await navigator.clipboard.writeText(value);showNotice('Draft copied to clipboard. Review before sending.');}catch{const input=$('#draftText');input.select();showNotice('Use Ctrl+C (or Cmd+C) to copy the selected draft.');}}
+  function makeTaskDraft(t,mode){const title=t.title.replace(/[.!?]+$/,'');const context=t.notes?.trim();const low=title.toLowerCase();let ask=`Could you please provide an update regarding ${title.charAt(0).toLowerCase()+title.slice(1)}?`;
+    if(/confirm|appointment|schedule/.test(low)){const topic=title.replace(/^(confirm|schedule|check)\s+/i,'').trim().toLowerCase();ask=`Could you please confirm ${topic||'the requested details'}?`;} 
+    else if(/quote|pricing|rate/.test(low))ask=`Could you please share the quote or pricing details related to “${title}”?`;
+    else if(/tracking|status|eta|delivery|pickup/.test(low))ask=`Could you please share the latest status and any updated timing regarding “${title}”?`;
+    else if(/invoice|payment|paperwork/.test(low))ask=`I'm following up about “${title}”. Could you please let me know the current status?`;
+    else if(/send|reply|email|contact|call|follow.?up/.test(low))ask=`I'm checking in regarding “${title}”. Could you let me know the next steps?`;
+    const subject=`Follow-up: ${short(title,130)}`;
+    const body=mode==='text'?`Hi, ${ask}${context?` Context: ${context}`:''} Thanks!`:`Hello,
+
+${ask}${context?`
+
+For reference: ${context}`:''}
+
+Thanks in advance for your help.
+
+Best regards`;
+    return {subject,body};}
+  function openTaskDraft(t){const dlg=modal('draftDialog');dlg.dataset.taskId=t.id;$('#draftRecipient').value=t.recipient||'';$('#draftMode').value='email';const draft=makeTaskDraft(t,'email');$('#draftSubject').value=draft.subject;$('#taskDraftBody').value=draft.body;dlg.showModal();}
+  $('#draftForm').addEventListener('submit',e=>e.preventDefault());
+  $('#draftMode').addEventListener('change',e=>{const t=state.tasks.find(x=>x.id===modal('draftDialog').dataset.taskId);if(!t)return;const d=makeTaskDraft(t,e.target.value);$('#draftSubject').value=d.subject;$('#taskDraftBody').value=d.body;});
+  async function copyTaskDraft(){const mode=$('#draftMode').value,subject=$('#draftSubject').value,body=$('#taskDraftBody').value;const content=mode==='text'?body:`Subject: ${subject}
+
+${body}`;try{await navigator.clipboard.writeText(content);showNotice('Editable draft copied. Review it before sending.');}catch{$('#taskDraftBody').select();showNotice('Select and copy the message manually.');}}
+  function openMailto(){const to=$('#draftRecipient').value.trim(),subject=$('#draftSubject').value,body=$('#taskDraftBody').value;const params=new URLSearchParams({subject,body});location.href=`mailto:${encodeURIComponent(to)}?${params.toString()}`;showNotice('Your email app will open. No email is sent automatically.');}
+  let installPrompt=null;
+  window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();installPrompt=event;});
+  window.addEventListener('appinstalled',()=>{installPrompt=null;showNotice('Stormskim is installed. Your tasks remain stored in this browser profile.');});
+  async function installApplication(){
+    if(installPrompt){const prompt=installPrompt;installPrompt=null;await prompt.prompt();try{await prompt.userChoice;}catch{}return;}
+    showNotice(location.protocol==='file:'?'To install Stormskim, publish the project on HTTPS first (such as GitHub Pages).':'Use your browser menu → Install app or Add to Home Screen. Availability depends on your browser.');
+  }
+  async function requestNotifications(){if(!('Notification' in window)){showNotice('This browser does not support notifications. Reminders still appear in the app.');return;}if(!window.isSecureContext){showNotice('System notifications require HTTPS or localhost. In-app reminders still work.');return;}try{const p=await Notification.requestPermission();showNotice(p==='granted'?'Notifications enabled while Stormskim is open.':'Notifications not enabled. In-app reminders remain available.');render();}catch{showNotice('Notifications were blocked by your browser.');}}
+  document.addEventListener('click',event=>{
+    const v=event.target.closest('[data-view]');if(v){navigate(v.dataset.view);return;}
+    const b=event.target.closest('[data-action]');if(!b)return;const action=b.dataset.action,id=b.dataset.id;const key=b.dataset.key;
+    switch(action){
+      case 'companion-full-assistant': closeCompanion();navigate('assistant');break;
+      case 'new-task':openTask();break;case 'new-routine':openRoutine();break;
+      case 'welcome-task':document.querySelector('#quickTaskTitle')?.focus();break;
+      case 'welcome-help':navigate('assistant');break;
+      case 'welcome-dismiss':state.welcomeDismissed=true;state.showWelcome=false;save();render();break;
+      case 'show-welcome':state.showWelcome=true;state.view='dashboard';save();render();showNotice('Getting-started guide reopened.');break;
+      case 'next-step':askAssistant('What should I tackle next?');break;
+      case 'close-dialog':b.closest('dialog')?.close();break;
+      case 'edit-task':openTask(id);break;
+      case 'snooze-task':{const t=state.tasks.find(x=>x.id===id);if(!t)break;t.remindAt=plannedReminder('tomorrow');t.remindedOn='';if(t.due&&t.due<offsetDay(1))t.due=offsetDay(1);save();render();showNotice(`Moved “${t.title}” to tomorrow morning.`);break;}
+      case 'toggle-task':{const t=state.tasks.find(x=>x.id===id);if(!t)break;t.done=!t.done;t.completedAt=t.done?new Date().toISOString():'';if(t.done){addLog('task-complete',t.title);dropAlerts(t.id);}save();render();showNotice(t.done?'Task completed and moved to History.':'Task restored to active list.');break;}
+      case 'restore-task':{const t=state.tasks.find(x=>x.id===id);if(!t)break;t.done=false;t.completedAt='';t.remindedOn='';t.followupNotified='';t.snoozedUntil='';dropAlerts(t.id);if(t.remindAt&&new Date(t.remindAt).getTime()<=Date.now())t.remindAt=upcomingReminder();addLog('task-restore',t.title);save();render();showNotice('Task restored to your active list.');break;}
+      case 'reuse-task':{const t=state.tasks.find(x=>x.id===id);if(!t)break;const item=addTask({...t,source:'history',remindAt:upcomingReminder(),due:offsetDay(1),followupAt:''});state.view='tasks';save();render();showNotice(`Added a fresh copy of “${item.title}” with a reminder tomorrow.`);break;}
+      case 'calendar-task':{const t=state.tasks.find(x=>x.id===id);if(t)calendarICS(t);break;}
+      case 'draft-task':{const t=state.tasks.find(x=>x.id===id);if(t)openTaskDraft(t);break;}
+      case 'copy-task-draft':copyTaskDraft();break;
+      case 'open-mailto':openMailto();break;
+      case 'notifications':requestNotifications();break;
+      case 'open-alerts':navigate('planner');if($('#reminderInbox'))$('#reminderInbox').scrollIntoView({block:'start',behavior:'smooth'});break;
+      case 'alert-complete':{const t=state.tasks.find(x=>x.id===id);if(t){t.done=true;t.completedAt=new Date().toISOString();dropAlerts(id);addLog('task-complete',t.title);save();render();showNotice('Done! Saved to History.');}break;}
+      case 'alert-snooze':{const t=state.tasks.find(x=>x.id===id);if(t)snoozeAlert(t,b.dataset.minutes);break;}
+      case 'alert-edit':{const t=state.tasks.find(x=>x.id===id);if(t)openTask(id);break;}
+      case 'alert-draft':{const t=state.tasks.find(x=>x.id===id);if(t)openTaskDraft(t);break;}
+      case 'alert-dismiss':dropAlerts(id);save();render();showNotice('Reminder dismissed. The task is still on your list.');break;
+      case 'install-app':installApplication();break;
+      case 'delete-task':{const t=state.tasks.find(x=>x.id===id);if(t&&confirm(`Delete task “${t.title}”?`)){dropAlerts(id);state.tasks=state.tasks.filter(x=>x.id!==id);addLog('task-delete',t.title);save();render();}break;}
+      case 'edit-routine':openRoutine(id);break;
+      case 'toggle-routine':{const r=state.routines.find(x=>x.id===id);if(r){r.enabled=!r.enabled;save();render();}break;}
+      case 'run-routine':{const r=state.routines.find(x=>x.id===id);if(r)doRoutine(r);break;}
+      case 'delete-routine':{const r=state.routines.find(x=>x.id===id);if(r&&confirm(`Delete routine “${r.name}”?`)){state.routines=state.routines.filter(x=>x.id!==id);save();render();}break;}
+      case 'task-filter':state.taskFilter=b.dataset.value;render();break;
+      case 'get-briefing':askAssistant('Daily briefing');break;
+      case 'plan-my-day':askAssistant('Plan my day');break;
+      case 'confirm-task-plan':{const plan=state.pendingTask;if(!plan)break;const t=addTask({...plan,source:'approved-reminder-plan'});state.pendingTask=null;save();navigate('planner');showNotice(`Saved two reminders for “${t.title}”.`);break;}
+      case 'cancel-task-plan':state.pendingTask=null;save();render();showNotice('Reminder plan cancelled.');break;
+      case 'accept-plan':{const p=state.planSuggestion;if(!p)break;for(const step of p.steps)addTask({title:step,remindAt:'',reminderCadence:'none',due:'',source:'approved-checklist'});state.planSuggestion=null;addLog('plan-approved',p.title);save();navigate('tasks');showNotice(`Added ${p.steps.length} checklist items. You can set reminders as needed.`);break;}
+      case 'dismiss-plan':state.planSuggestion=null;save();render();break;
+      case 'ask-command':askAssistant(b.dataset.command);break;
+      case 'copy-draft':copyDraft();break;
+      case 'approve-suggestion':{const sug=suggestions().find(x=>x.key===key);if(!sug)break;const r={id:uid(),name:sug.title,cadence:'daily',workspace:'personal',steps:[sug.title],enabled:true,lastAutoDate:'',createdAt:new Date().toISOString()};state.routines.push(r);addLog('routine-approve',r.name);save();render();showNotice('Routine approved. Edit its schedule and steps anytime.');break;}
+      case 'dismiss-suggestion':state.dismissed.push(key);save();render();break;
+      case 'reset-suggestions':state.dismissed=[];save();render();showNotice('Dismissed suggestions cleared.');break;
+      case 'export':exportData();break;
+      case 'import':$('#importFile').click();break;
+      case 'load-demo':if(confirm('Load fictional examples? This replaces your current tasks and routines. Export a backup first.')){state=initialState();dueRoutines();save();render();showNotice('Sample workspace loaded. All sample names and records are fictional.');}break;
+      case 'clear-demo':if(confirm('Remove all fictional demo tasks, routines and history and start with a blank workspace?')){state={...initialState(),demo:false,welcomeDismissed:false,assistantTone:'friendly',tasks:[],loads:[],routines:[],logs:[],chat:[],dismissed:[],draft:'',planSuggestion:null,pendingTask:null,alerts:[],view:'dashboard'};save();render();showNotice('Your organizer is clear and ready.');}break;
+      case 'reset-all':if(confirm('Permanently delete ALL local Stormskim data, including any older imported data? Export a backup first if needed.')){state={...initialState(),demo:false,welcomeDismissed:false,assistantTone:'friendly',tasks:[],loads:[],routines:[],logs:[],chat:[],dismissed:[],draft:'',planSuggestion:null,pendingTask:null,alerts:[],view:'dashboard'};save();render();showNotice('Local workspace reset.');}break;
+    }
+  });
+  $('#taskForm').addEventListener('submit',e=>{e.preventDefault();const f=e.currentTarget;const id=f.elements.id.value;const old=state.tasks.find(t=>t.id===id);const item=cleanTask({id:id||uid(),title:f.elements.title.value,notes:f.elements.notes.value,due:f.elements.due.value,remindAt:f.elements.remindAt.value,reminderCadence:f.elements.reminderCadence.value,followupAt:f.elements.followupAt.value,followupNotified:old?.followupAt===f.elements.followupAt.value?old?.followupNotified:'',snoozedUntil:'',remindedOn:old?.remindAt===f.elements.remindAt.value?old?.remindedOn:'',recipient:f.elements.recipient.value,priority:f.elements.priority.value,workspace:old?.workspace||'personal',done:old?.done||false,completedAt:old?.completedAt||'',createdAt:old?.createdAt||new Date().toISOString(),source:old?.source||'manual'});if(id){dropAlerts(id);state.tasks=state.tasks.map(t=>t.id===id?item:t);}else{state.tasks.push(item);addLog('task-add',item.title);}save();modal('taskDialog').close();render();showNotice(id?'Task updated.':'Task created.');});
+  $('#routineForm').addEventListener('submit',e=>{e.preventDefault();const f=e.currentTarget;const old=f.elements.id.value,prev=state.routines.find(r=>r.id===old);const item=cleanRoutine({id:old||uid(),name:f.elements.name.value,cadence:f.elements.cadence.value,workspace:prev?.workspace||'personal',enabled:f.elements.enabled.checked,steps:f.elements.steps.value.split('\n').map(s=>s.trim()).filter(Boolean),lastAutoDate:prev?.lastAutoDate||'',createdAt:prev?.createdAt||new Date().toISOString()});if(!item.steps.length){showNotice('Please enter at least one routine step.');return;}if(old)state.routines=state.routines.map(r=>r.id===old?item:r);else{state.routines.push(item);addLog('routine-add',item.name);}save();modal('routineDialog').close();render();showNotice(old?'Routine updated.':'Routine saved. Use “Run now” or reopen on a scheduled day.');});
+  document.addEventListener('submit',e=>{if(e.target.id==='quickTaskForm'){e.preventDefault();const f=e.target;const title=f.elements.title.value.trim();if(!title)return;const result=createFromWords(title,f.elements.when.value,'quick');if(result.error){showNotice(result.error);return;}const t=result.task;if(t){render();showNotice(`Added “${t.title}”. ${t.remindAt?`Reminder: ${conciseWhen(t.remindAt)} (while app is open).`:'No reminder set.'}${isMessageTask(t)?' You can prepare a suggested message from the task.':''}`);document.querySelector('#quickTaskTitle')?.focus();}return;}if(e.target.id!=='chatForm')return;e.preventDefault();const message=e.target.elements.message.value.trim();if(message)askAssistant(message);});
+  document.addEventListener('input',e=>{if(e.target.id==='taskSearch'||e.target.id==='historySearch'){const val=e.target.value,cursor=e.target.selectionStart;state.search=val;render();const next=$('#'+e.target.id);if(next){next.focus();next.setSelectionRange(cursor,cursor);}}});
+  document.addEventListener('change',e=>{if(e.target.id==='assistantTone'){state.assistantTone=validChoice(e.target.value,['friendly','concise'],'friendly');save();showNotice('Niarel response style saved.');}});
+  // All tasks appear together; workspace filtering is no longer needed.
+  $('#importFile').addEventListener('change',async e=>{const file=e.target.files?.[0];e.target.value='';if(!file)return;if(file.size>2_000_000){showNotice('Backup must be smaller than 2 MB.');return;}try{const result=cleanImported(JSON.parse(await file.text()));if(!confirm(`Import ${result.tasks.length} tasks and ${result.routines.length} routines? This replaces your existing local data.`))return;state=result;save();render();showNotice('Backup imported successfully.');}catch(err){showNotice('Import failed: '+err.message);}});
+  // Lightweight on-page Niarel helper: accessible popover, uses only the same local rules as Ask Niarel.
+  const companionPanel = $('#companionPanel');
+  const companionLauncher = $('#companionLauncher');
+  const companionTip = $('#companionTip');
+  function dismissCompanionTip(){companionTip.hidden=true;try{localStorage.setItem('stormskim_companion_tip_dismissed','true');}catch{}}
+  function closeCompanion(){companionPanel.hidden=true;companionLauncher.setAttribute('aria-expanded','false');companionLauncher.setAttribute('aria-label','Open Niarel helper');}
+  function toggleCompanion(){
+    const nowOpen=companionPanel.hidden;
+    if(nowOpen){dismissCompanionTip();companionPanel.hidden=false;companionLauncher.setAttribute('aria-expanded','true');companionLauncher.setAttribute('aria-label','Close Niarel helper');$('#companionInput').focus();}
+    else{closeCompanion();companionLauncher.focus();}
+  }
+  function appendCompanion(text,who){const row=document.createElement('div');row.className=who==='user'?'companion-user':'companion-reply';row.textContent=short(text,3000);$('#companionConversation').appendChild(row);$('#companionConversation').scrollTop=$('#companionConversation').scrollHeight;}
+  function companionAsk(command){const prompt=short(command,500).trim();if(!prompt)return;appendCompanion(prompt,'user');state.chat.push({id:uid(),who:'user',text:prompt});const reply=answerFor(prompt);if(state.assistantTone==='concise'&&reply.text.length>220&&!reply.draft)reply.text=reply.text.split('\n\n')[0].slice(0,320);state.chat.push({id:uid(),who:'assistant',text:reply.text});state.chat=state.chat.slice(-75);state.draft=reply.draft||'';save();render();appendCompanion(reply.text+(reply.draft?'\n\nDraft ready—open the full assistant to copy and review it.':''),'assistant');}
+  companionLauncher.addEventListener('click',toggleCompanion);
+  $('#companionClose').addEventListener('click',()=>{closeCompanion();companionLauncher.focus();});
+  $('#companionDismissTip').addEventListener('click',dismissCompanionTip);
+  if((()=>{try{return localStorage.getItem('stormskim_companion_tip_dismissed')==='true';}catch{return false;}})())companionTip.hidden=true;
+  document.querySelectorAll('[data-companion-command]').forEach(b=>b.addEventListener('click',()=>{const command=b.dataset.companionCommand;if(command==='Add task '){const input=$('#companionInput');input.value=command;input.focus();}else companionAsk(command);}));
+  $('#companionForm').addEventListener('submit',e=>{e.preventDefault();const inp=$('#companionInput');const prompt=inp.value.trim();if(prompt){inp.value='';companionAsk(prompt);inp.focus();}});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!companionPanel.hidden&&!document.querySelector('dialog[open]'))closeCompanion();});
+  // Browser-local, foreground-only schedule check. No external job runners.
+  dueRoutines();save();render();
+  checkReminders();window.setInterval(checkReminders,60_000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkReminders();});
+  /* standalone needs no service worker; full package includes one. */
+})();
+
+</script>
+</body>
+</html>
